@@ -13,6 +13,7 @@ namespace CensusAnalyzerProjectTest
         const string WRONG_INDIAN_CENSUS_CSV_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/Utilities/IndiaStateCensusData.txt";
         const string WRONG_INDIAN_CENSUS_CSV_DELIMITER_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/Utilities/IndiaStateCensusData - Copy.csv";
         ICensusCSVLoader censusAnalyzerObj;
+        ICensusCSVLoader filetype;
         Count countObj;
         ICensusCSVLoader delimiterObj;
         ICensusCSVLoader typeObj;
@@ -21,7 +22,8 @@ namespace CensusAnalyzerProjectTest
         public void Setup()
         {
             censusAnalyzerObj = new CensusAnalyzer();
-            typeObj = new Delimiter(censusAnalyzerObj);
+            filetype = new FileType(censusAnalyzerObj);
+            typeObj = new Delimiter(filetype);
             delimiterObj = new Delimiter(typeObj);
             countObj = new Count(delimiterObj);
         }
