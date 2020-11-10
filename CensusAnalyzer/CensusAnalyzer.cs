@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CensusAnalyzerProject.Exceptions;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -7,6 +8,7 @@ namespace CensusAnalyzerProject
 {
     public class CensusAnalyzer
     {
+        const string ALLOWED_EXTENSION = ".csv";
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
@@ -25,6 +27,15 @@ namespace CensusAnalyzerProject
                 }
             }
             return CSVData.Count-1;
+        }
+
+        public void VerifyCSV(string path)
+        {
+            string fileExtension = Path.GetExtension(path); 
+            if (!fileExtension.Equals(ALLOWED_EXTENSION))
+            {
+                throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_FILE);
+            }
         }
     }
 }
