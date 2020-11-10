@@ -18,7 +18,6 @@ namespace CensusAnalyzerProject
         public ArrayList LoadData(string path, string className)
         {
             VerifyCSV(path);
-            verifyType("CensusAnalyzerProject.Models." + className);
             ArrayList data = new ArrayList();
             if (File.Exists(path))
             {
@@ -39,15 +38,6 @@ namespace CensusAnalyzerProject
             if (!fileExtension.Equals(ALLOWED_EXTENSION))
             {
                 throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_FILE);
-            }
-        }
-
-        public void verifyType(string className)
-        {   
-            Type type = Type.GetType(className);
-            if (type == null)
-            {
-                throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_TYPE);
             }
         }
 
