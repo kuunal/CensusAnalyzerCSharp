@@ -7,7 +7,7 @@ using System.IO;
 
 namespace CensusAnalyzerProject
 {
-    public class CensusAnalyzer
+    public class CensusAnalyzer : ICensusCSVLoader
     {
         const string ALLOWED_EXTENSION = ".csv";
         static void Main(string[] args)
@@ -15,22 +15,23 @@ namespace CensusAnalyzerProject
             Console.WriteLine("Hello World!");
         }
 
-        public int GetCount(string path, string className)
+        public ArrayList LoadData(string path, string className)
         {
             VerifyCSV(path);
             verifyType("CensusAnalyzerProject.Models." + className);
-            ArrayList CSVData = new ArrayList();
+            ArrayList data = new ArrayList();
             if (File.Exists(path))
             {
                 using (StreamReader streamReader = new StreamReader(path)) { 
                     while (!streamReader.EndOfStream)
                     {
-                        CSVData.Add(streamReader.ReadLine());
+                        data.Add(streamReader.ReadLine());
                     }
                 }
             }
-            return CSVData.Count-1;
+            return data;
         }
+
 
         public void VerifyCSV(string path)
         {
@@ -49,5 +50,6 @@ namespace CensusAnalyzerProject
                 throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_TYPE);
             }
         }
+
     }
 }
