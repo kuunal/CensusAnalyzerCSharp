@@ -14,15 +14,16 @@ namespace CensusAnalyzerProjectTest
         const string WRONG_INDIAN_CENSUS_CSV_DELIMITER_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/Utilities/IndiaStateCensusData - Copy.csv";
         ICensusCSVLoader censusAnalyzerObj;
         Count countObj;
-        ICensusCSVLoader censusCSVLoader;
+        ICensusCSVLoader delimiterObj;
+        ICensusCSVLoader typeObj;
 
         [SetUp]
         public void Setup()
         {
             censusAnalyzerObj = new CensusAnalyzer();
-    
-            censusCSVLoader = new Delimiter(censusAnalyzerObj);
-            countObj = new Count(censusCSVLoader);
+            typeObj = new Delimiter(censusAnalyzerObj);
+            delimiterObj = new Delimiter(typeObj);
+            countObj = new Count(delimiterObj);
         }
 
         [Test]
@@ -62,7 +63,7 @@ namespace CensusAnalyzerProjectTest
         public void givenIndiaCensusCSV_WhenIncorrectDelimiter_ThrowsException()
         {
             try { 
-                censusCSVLoader.LoadData(WRONG_INDIAN_CENSUS_CSV_DELIMITER_PATH, "IndianStateCensus");
+                delimiterObj.LoadData(WRONG_INDIAN_CENSUS_CSV_DELIMITER_PATH, "IndianStateCensus");
             }catch(CensusAnalyzerExceptions e)
             {
                 Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_DELIMITER, e.ExceptionType);
