@@ -1,6 +1,7 @@
 using CensusAnalyzerProject;
 using NUnit.Framework;
 using CensusAnalyzerProject.Exceptions;
+using CensusAnalyzerProject.Models;
 using System;
 using System.IO;
 
@@ -20,7 +21,7 @@ namespace CensusAnalyzerProjectTest
         [Test]
         public void givenIndianCensusCSV_WhenCorrect_ReturnsNumberOfRecords()
         {
-            int count = censusAnalyzerObj.GetCount(INDIAN_CENSUS_CSV_PATH);
+            int count = censusAnalyzerObj.GetCount(INDIAN_CENSUS_CSV_PATH, "IndianStateCensus");
             Assert.AreEqual(29, count);
         }
 
@@ -29,11 +30,23 @@ namespace CensusAnalyzerProjectTest
         {
             try
             {
-                censusAnalyzerObj.VerifyCSV(WRONG_INDIAN_CENSUS_CSV_PATH);
+                censusAnalyzerObj.GetCount(WRONG_INDIAN_CENSUS_CSV_PATH, "IndianStateCensus");
             }
             catch (CensusAnalyzerExceptions e)
             {
                 Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_FILE, e.ExceptionType);
+            }
+        }
+
+        [Test]
+        public void givenCorrectIndianCensusCSV_WhenTypeIncorrect_ReturnsException()
+        {
+            try
+            { 
+                censusAnalyzerObj.GetCount(INDIAN_CENSUS_CSV_PATH, "wrong type");
+            }catch(CensusAnalyzerExceptions e)
+            {
+                Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_TYPE ,e.ExceptionType);
             }
         }
     }
