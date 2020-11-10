@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace CensusAnalyzer
+namespace CensusAnalyzerProject
 {
-    class Program
+    class CensusAnalyzer
     {
         static void Main(string[] args)
         {
