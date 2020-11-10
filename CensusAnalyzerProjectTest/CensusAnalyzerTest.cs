@@ -8,29 +8,37 @@ using System.IO;
 namespace CensusAnalyzerProjectTest
 {
     public class CensusAnalyzerTest
-    {
+    {   
         const string INDIAN_CENSUS_CSV_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/Utilities/IndiaStateCensusData.csv";
         const string WRONG_INDIAN_CENSUS_CSV_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/Utilities/IndiaStateCensusData.txt";
-        CensusAnalyzer censusAnalyzerObj;
+        const string WRONG_INDIAN_CENSUS_CSV_DELIMITER_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/Utilities/IndiaStateCensusData - Copy.csv";
+        ICensusCSVLoader censusAnalyzerObj;
+        Count countObj;
+        ICensusCSVLoader censusCSVLoader;
+
         [SetUp]
         public void Setup()
         {
             censusAnalyzerObj = new CensusAnalyzer();
+    
+            censusCSVLoader = new Delimiter(censusAnalyzerObj);
+            countObj = new Count(censusCSVLoader);
         }
 
         [Test]
         public void givenIndianCensusCSV_WhenCorrect_ReturnsNumberOfRecords()
         {
-            int count = censusAnalyzerObj.GetCount(INDIAN_CENSUS_CSV_PATH, "IndianStateCensus");
+            
+            int count = countObj.GetCount(INDIAN_CENSUS_CSV_PATH, "IndianStateCensus");
             Assert.AreEqual(29, count);
         }
 
         [Test]  
-        public void givenIndianCensusCSV_WhenIncorrect_ReturnsException()
+        public void givenIndianCensusCSV_WhenIncorrect_ThrowsException()
         {
             try
             {
-                censusAnalyzerObj.GetCount(WRONG_INDIAN_CENSUS_CSV_PATH, "IndianStateCensus");
+                countObj.GetCount(WRONG_INDIAN_CENSUS_CSV_PATH, "IndianStateCensus");
             }
             catch (CensusAnalyzerExceptions e)
             {
@@ -39,14 +47,25 @@ namespace CensusAnalyzerProjectTest
         }
 
         [Test]
-        public void givenCorrectIndianCensusCSV_WhenTypeIncorrect_ReturnsException()
+        public void givenCorrectIndianCensusCSV_WhenTypeIncorrect_ThrowsException()
         {
             try
-            { 
-                censusAnalyzerObj.GetCount(INDIAN_CENSUS_CSV_PATH, "wrong type");
+            {
+                countObj.GetCount(INDIAN_CENSUS_CSV_PATH, "wrong type");
             }catch(CensusAnalyzerExceptions e)
             {
                 Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_TYPE ,e.ExceptionType);
+            }
+        }
+
+        [Test]
+        public void givenIndiaCensusCSV_WhenIncorrectDelimiter_ThrowsException()
+        {
+            try { 
+                censusCSVLoader.LoadData(WRONG_INDIAN_CENSUS_CSV_DELIMITER_PATH, "IndianStateCensus");
+            }catch(CensusAnalyzerExceptions e)
+            {
+                Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_DELIMITER, e.ExceptionType);
             }
         }
     }
