@@ -9,7 +9,6 @@ namespace CensusAnalyzerProject
 {
     public class CensusAnalyzer : ICensusCSVLoader
     {
-        const string ALLOWED_EXTENSION = ".csv";
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
@@ -17,7 +16,6 @@ namespace CensusAnalyzerProject
 
         public ArrayList LoadData(string path, string className)
         {
-            VerifyCSV(path);
             ArrayList data = new ArrayList();
             if (File.Exists(path))
             {
@@ -30,16 +28,5 @@ namespace CensusAnalyzerProject
             }
             return data;
         }
-
-
-        public void VerifyCSV(string path)
-        {
-            string fileExtension = Path.GetExtension(path); 
-            if (!fileExtension.Equals(ALLOWED_EXTENSION))
-            {
-                throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_FILE);
-            }
-        }
-
     }
 }
