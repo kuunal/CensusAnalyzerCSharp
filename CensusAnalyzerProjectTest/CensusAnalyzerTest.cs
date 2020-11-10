@@ -1,18 +1,24 @@
+using CensusAnalyzerProject;
 using NUnit.Framework;
+
 
 namespace CensusAnalyzerProjectTest
 {
-    public class Tests
+    public class CensusAnalyzerTest
     {
+        const string INDIAN_CENSUS_CSV_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerTest/utilities/IndiaStateCensusData.csv";
+
         [SetUp]
         public void Setup()
         {
         }
 
         [Test]
-        public void Test1()
+        public void givenIndianCensusCSV_WhenCorrect_ReturnsNumberOfRecords()
         {
-            Assert.Pass();
+            CensusAnalyzer censusAnalyzerObj = new CensusAnalyzer();
+            int count = censusAnalyzerObj.GetCount(INDIAN_CENSUS_CSV_PATH);
+            Assert.AreEqual(30, count);
         }
     }
 }
