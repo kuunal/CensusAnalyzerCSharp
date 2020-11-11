@@ -4,6 +4,7 @@ using CensusAnalyzerProject.Exceptions;
 using CensusAnalyzerProject.Models;
 using System;
 using System.IO;
+using System.Collections;
 
 namespace CensusAnalyzerProjectTest
 {
@@ -20,7 +21,7 @@ namespace CensusAnalyzerProjectTest
         
         ICensusCSVLoader censusAnalyzerObj;
         ICensusCSVLoader filetype;
-        Count countObj;
+        Services countObj;
         ICensusCSVLoader delimiterObj;
         ICensusCSVLoader typeObj;
         ICensusCSVLoader headerObj;
@@ -33,7 +34,7 @@ namespace CensusAnalyzerProjectTest
             typeObj = new CSVType(filetype);
             delimiterObj = new Delimiter(typeObj);
             headerObj = new Header(delimiterObj);
-            countObj = new Count(headerObj);
+            countObj = new Services(headerObj);
         }
 
         [Test]
@@ -73,7 +74,7 @@ namespace CensusAnalyzerProjectTest
         public void givenIndiaCensusCSV_WhenIncorrectDelimiter_ThrowsException()
         {
             try { 
-                delimiterObj.LoadData(WRONG_INDIAN_CENSUS_CSV_DELIMITER_PATH, "IndianStateCensus");
+                countObj.LoadData(WRONG_INDIAN_CENSUS_CSV_DELIMITER_PATH, "IndianStateCensus");
             }catch(CensusAnalyzerExceptions e)
             {
                 Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_DELIMITER, e.ExceptionType);
@@ -156,6 +157,15 @@ namespace CensusAnalyzerProjectTest
             }
         }
 
+        [Test]
+        public void givenIndianStateCensusCSV_WhenToSort_ReturnsSortedList()
+        {
+            ArrayList list = countObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensus");
+            ArrayList sortedList = countObj.SortData(list, "state");
+
+            Assert.AreEqual(sortedList[0].ToString(), "Andhra Pradesh,49386799,162968,303");
+            Assert.AreEqual(sortedList[sortedList.Count-1].ToString(), "West Bengal,91347736,88752,1029");
+        }
 
     }
 }
