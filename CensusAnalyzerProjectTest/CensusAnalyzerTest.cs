@@ -143,5 +143,19 @@ namespace CensusAnalyzerProjectTest
             }
         }
 
+        [Test]
+        public void givenIndiaStateCodeCSV_WhenIncorrectHeader_ThrowsException()
+        {
+            try
+            {
+                countObj.GetCount(WRONG_INDIA_STATE_CODE_HEADER_PATH, "IndianStateCensus");
+            }
+            catch (CensusAnalyzerExceptions e)
+            {
+                Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_HEADER, e.ExceptionType);
+            }
+        }
+
+
     }
 }
