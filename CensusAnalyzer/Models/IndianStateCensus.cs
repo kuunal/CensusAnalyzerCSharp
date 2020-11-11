@@ -6,10 +6,10 @@ namespace CensusAnalyzerProject.Models
 {
     class IndianStateCensus
     {
-        string state { get; set; }
-        long population { get; set; }
-        long areaInSquareKiloMeter { get; set; }
-        long densityPerSquareKiloMeter { get; set; }
+        public string state { get; set; }
+        public long population { get; set; }
+        public long areaInSquareKiloMeter { get; set; }
+        public long densityPerSquareKiloMeter { get; set; }
 
     }
 }
