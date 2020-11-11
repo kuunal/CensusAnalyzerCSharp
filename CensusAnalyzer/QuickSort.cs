@@ -13,6 +13,7 @@ namespace CensusAnalyzerProject
         {
             string[] headers = data[0].ToString().Split(",");
             int headerIndex = Array.IndexOf(headers, field);
+            data.RemoveAt(0);
             Partition(headerIndex, data, 0 , data.Count-1);
             return data;
         }
@@ -28,7 +29,7 @@ namespace CensusAnalyzerProject
 
         private int Quick(int headerIndex, ArrayList data, int left, int right)
         {
-            string pi = (string) data[right];
+            string pi = data[right].ToString().Split(",")[headerIndex];
             int piINdex = left;
             for(int index = left; index < right; index++)
             {
