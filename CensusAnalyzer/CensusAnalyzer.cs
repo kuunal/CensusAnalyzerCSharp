@@ -16,6 +16,7 @@ namespace CensusAnalyzerProject
 
         public ArrayList LoadData(string path, string className)
         {
+            Type type = Type.GetType("CensusAnalyzerProject.Models." + className);
             ArrayList data = new ArrayList();
             if (File.Exists(path))
             {
