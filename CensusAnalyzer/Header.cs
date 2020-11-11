@@ -27,7 +27,7 @@ namespace CensusAnalyzerProject
             PropertyInfo[] properties = type.GetProperties(); 
             foreach(PropertyInfo property in properties)
             {
-                if (!Array.Exists<string>(header, rawHeaders => rawHeaders.Equals(property.Name)))
+                if (!Array.Exists<string>(header, rawHeaders => rawHeaders.ToLower().Equals(property.Name.ToLower())))
                 {
                     throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_HEADER);
                 }
