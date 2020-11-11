@@ -26,7 +26,7 @@ namespace CensusAnalyzerProjectTest
         {
             censusAnalyzerObj = new CensusAnalyzer();
             filetype = new FileType(censusAnalyzerObj);
-            typeObj = new Delimiter(filetype);
+            typeObj = new CSVType(filetype);
             delimiterObj = new Delimiter(typeObj);
             headerObj = new Header(delimiterObj);
             countObj = new Count(headerObj);
