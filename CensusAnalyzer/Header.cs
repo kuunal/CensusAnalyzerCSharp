@@ -24,10 +24,10 @@ namespace CensusAnalyzerProject
         {
             string[] header = headers.Split(",");
             Type type = Type.GetType("CensusAnalyzerProject.Models." + className);
-            PropertyInfo[] properties = type.GetProperties();
+            PropertyInfo[] properties = type.GetProperties(); 
             foreach(PropertyInfo property in properties)
             {
-                if (!Array.Exists<string>(header, rawHeaders => rawHeaders.Equals(property)))
+                if (!Array.Exists<string>(header, rawHeaders => rawHeaders.Equals(property.Name)))
                 {
                     throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_HEADER);
                 }
