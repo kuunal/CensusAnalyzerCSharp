@@ -14,8 +14,10 @@ namespace CensusAnalyzerProjectTest
         const string WRONG_INDIAN_CENSUS_CSV_DELIMITER_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/Utilities/IndiaStateCensusData - Copy.csv";
         const string WRONG_INDIAN_CENSUS_CSV_HEADER_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/Utilities/IndiaStateCensusData - Copy - Copy.csv";
         const string INDIAN_STATE_CODE_CSV_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/utilities/IndiaStateCode.csv";
-
-
+        const string WRONG_INDIA_STATE_CODE_CSV_DELIMITER_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/utilities/IndiaStateCode - Copy.csv";
+        const string WRONG_INDIA_STATE_CODE_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/utilities/IndiaStateCode.txt";
+        const string WRONG_INDIA_STATE_CODE_HEADER_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/utilities/WrongIndiaStateCode.csv";
+        
         ICensusCSVLoader censusAnalyzerObj;
         ICensusCSVLoader filetype;
         Count countObj;
@@ -99,6 +101,23 @@ namespace CensusAnalyzerProjectTest
             int count = countObj.GetCount(INDIAN_STATE_CODE_CSV_PATH, "IndianStateCode");
             Assert.AreEqual(37, count);
         }
+
+
+
+        [Test]
+        public void givenIndianStateCodeCSV_WhenIncorrect_ThrowsException()
+        {
+            try
+            {
+                countObj.GetCount(WRONG_INDIA_STATE_CODE_PATH, "IndianStateCode");
+            }
+            catch (CensusAnalyzerExceptions e)
+            {
+                Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_FILE, e.ExceptionType);
+            }
+        }
+
+        
 
     }
 }
