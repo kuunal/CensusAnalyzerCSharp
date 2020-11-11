@@ -117,7 +117,17 @@ namespace CensusAnalyzerProjectTest
             }
         }
 
-        
-
+        [Test]
+        public void givenCorrectIndianStateCodeCSV_WhenTypeIncorrect_ThrowsException()
+        {
+            try
+            {
+                countObj.GetCount(INDIAN_STATE_CODE_CSV_PATH, "wrong type");
+            }
+            catch (CensusAnalyzerExceptions e)
+            {
+                Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_TYPE, e.ExceptionType);
+            }
+        }
     }
 }
