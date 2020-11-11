@@ -129,5 +129,19 @@ namespace CensusAnalyzerProjectTest
                 Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_TYPE, e.ExceptionType);
             }
         }
+
+        [Test]
+        public void givenIndiaStateCodeCSV_WhenIncorrectDelimiter_ThrowsException()
+        {
+            try
+            {
+                delimiterObj.LoadData(WRONG_INDIA_STATE_CODE_CSV_DELIMITER_PATH, "IndianStateCensus");
+            }
+            catch (CensusAnalyzerExceptions e)
+            {
+                Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_DELIMITER, e.ExceptionType);
+            }
+        }
+
     }
 }
