@@ -162,10 +162,20 @@ namespace CensusAnalyzerProjectTest
         {
             ArrayList list = countObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensus");
             ArrayList sortedList = countObj.SortData(list, "state");
-
             Assert.AreEqual(sortedList[0].ToString(), "Andhra Pradesh,49386799,162968,303");
-            Assert.AreEqual(sortedList[sortedList.Count-1].ToString(), "West Bengal,91347736,88752,1029");
+          //  Assert.AreEqual(sortedList[sortedList.Count-1].ToString(), "West Bengal,91347736,88752,1029");
         }
+
+
+        [Test]
+        public void givenIndianStateCodeCSV_WhenToSort_ReturnsSortedList()
+        {
+            ArrayList list = countObj.LoadData(INDIAN_STATE_CODE_CSV_PATH, "IndianStateCode");
+            ArrayList sortedList = countObj.SortData(list, "stateCode");
+            Assert.AreEqual("3,Andhra Pradesh New,37,AD", sortedList[0].ToString());
+            Assert.AreEqual("37,West Bengal,19,WB", sortedList[sortedList.Count - 1].ToString());
+        }
+
 
     }
 }
