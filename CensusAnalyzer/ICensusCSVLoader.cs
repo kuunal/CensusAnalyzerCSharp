@@ -7,6 +7,6 @@ namespace CensusAnalyzerProject
 {
     public interface ICensusCSVLoader   
     {
-        public ArrayList LoadData(string path, string className);
+        public Dictionary<string, List<string>> LoadData(string path, string className);
     }
 }

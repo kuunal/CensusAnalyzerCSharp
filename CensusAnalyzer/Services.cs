@@ -14,21 +14,22 @@ namespace CensusAnalyzerProject
 
     
 
-        public override ArrayList LoadData(string path, string className)
+        public override Dictionary<string, List<string>> LoadData(string path, string className)
         {
             return base.LoadData(path, className);
         }
 
         public int GetCount(string path, string className)
         {
-            return LoadData(path, className).Count-1;
+            return LoadData(path, className)[className].Count-1;
         }
 
-        public ArrayList SortData(ArrayList list, string field)
+        public List<string> SortData(Dictionary<string, List<string>> dict, string field, string className)
         {
             Factory factory = new Factory();
             ISort sortObj = factory.GetSort();
-            ArrayList sortedList = sortObj.sort(list, field);
+            List<string> list = dict[className];
+            List<string> sortedList = sortObj.sort(list, field);
             string data = JsonConvert.SerializeObject(sortedList);
             File.WriteAllText(JSON_FILE_PATH, data);
             return sortedList;

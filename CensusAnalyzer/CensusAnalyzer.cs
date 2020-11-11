@@ -14,10 +14,10 @@ namespace CensusAnalyzerProject
             Console.WriteLine("Hello World!");
         }
 
-        public ArrayList LoadData(string path, string className)
+        public Dictionary<string, List<string>> LoadData(string path, string className)
         {
-            Type type = Type.GetType("CensusAnalyzerProject.Models." + className);
-            ArrayList data = new ArrayList();
+            Dictionary<string, List<string>> map = new Dictionary<string, List<string>>();
+            List<string> data = new List<string>();
             if (File.Exists(path))
             {
                 using (StreamReader streamReader = new StreamReader(path)) { 
@@ -26,8 +26,9 @@ namespace CensusAnalyzerProject
                         data.Add(streamReader.ReadLine());
                     }
                 }
+                map.Add(className, data);
             }
-            return data;
+            return map;
         }
     }
 }

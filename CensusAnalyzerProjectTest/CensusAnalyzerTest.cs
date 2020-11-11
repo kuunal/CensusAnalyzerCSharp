@@ -5,6 +5,7 @@ using CensusAnalyzerProject.Models;
 using System;
 using System.IO;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace CensusAnalyzerProjectTest
 {
@@ -152,18 +153,18 @@ namespace CensusAnalyzerProjectTest
         [Test]
         public void givenIndianStateCensusCSV_WhenToSort_ReturnsSortedList()
         {
-            ArrayList list = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensus");
-            ArrayList sortedList = CSVObj.SortData(list, "state");
+            Dictionary<string, List<string>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensus");
+            List<string> sortedList = CSVObj.SortData(map, "state", "IndianStateCensus");
             Assert.AreEqual(sortedList[0].ToString(), "Andhra Pradesh,49386799,162968,303");
-          //  Assert.AreEqual(sortedList[sortedList.Count-1].ToString(), "West Bengal,91347736,88752,1029");
+            Assert.AreEqual(sortedList[sortedList.Count-1].ToString(), "West Bengal,91347736,88752,1029");
         }
 
 
         [Test]
         public void givenIndianStateCodeCSV_WhenToSort_ReturnsSortedList()
         {
-            ArrayList list = CSVObj.LoadData(INDIAN_STATE_CODE_CSV_PATH, "IndianStateCode");
-            ArrayList sortedList = CSVObj.SortData(list, "stateCode");
+            Dictionary<string, List<string>> map = CSVObj.LoadData(INDIAN_STATE_CODE_CSV_PATH, "IndianStateCode");
+            List<string> sortedList = CSVObj.SortData(map, "stateCode", "IndianStateCode");
             Assert.AreEqual("3,Andhra Pradesh New,37,AD", sortedList[0].ToString());
             Assert.AreEqual("37,West Bengal,19,WB", sortedList[sortedList.Count - 1].ToString());
         }

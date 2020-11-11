@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Reflection;
 using System.Text;
 
@@ -13,11 +14,14 @@ namespace CensusAnalyzerProject
         {
         }
 
-        public override ArrayList LoadData(string path, string className)
+        public override Dictionary<string, List<string>> LoadData(string path, string className)
         {
-            ArrayList data = base.LoadData(path, className);
-            ValidateHeaders(data[0].ToString(), className);
-            return data;
+            using (StreamReader reader = new StreamReader(path))
+            {
+                string data = reader.ReadLine();
+                ValidateHeaders(data, className);
+            }
+                return base.LoadData(path, className);
         }
 
         public void ValidateHeaders(string headers, string className)

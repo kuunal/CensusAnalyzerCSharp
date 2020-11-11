@@ -13,7 +13,7 @@ namespace CensusAnalyzerProject
         {
             this.censusCSVLoader = censusCSVLoader;
         }
-        public virtual ArrayList LoadData(string path, string className)
+        public virtual Dictionary<string, List<string>> LoadData(string path, string className)
         {
             return censusCSVLoader.LoadData(path, className);
         }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace CensusAnalyzerProject
@@ -9,14 +10,17 @@ namespace CensusAnalyzerProject
     public class Delimiter : Decorator
     {
         public Delimiter(ICensusCSVLoader censusCSVLoader) : base(censusCSVLoader) { }
-        public override ArrayList LoadData(string path, string className)
+        public override Dictionary<string, List<string>> LoadData(string path, string className)
         {
-            ArrayList data = base.LoadData(path, className);
-            if (!data[0].ToString().Contains(","))
+            using (StreamReader reader = new StreamReader(path)) 
             {
-                throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_DELIMITER);
+                string data = reader.ReadLine();
+                if (!data.ToString().Contains(",") )
+                {
+                    throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_DELIMITER);
+                }
             }
-            return data;
+            return base.LoadData(path, className);
         }
     }
 }

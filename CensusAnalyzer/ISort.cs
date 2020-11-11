@@ -7,6 +7,6 @@ namespace CensusAnalyzerProject
 {
     public interface ISort
     {
-        public ArrayList sort(ArrayList data, string field);
+        public  List<string> sort(List<string> data, string field);
     }
 }

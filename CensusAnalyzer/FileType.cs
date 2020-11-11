@@ -15,7 +15,7 @@ namespace CensusAnalyzerProject
         {
         }
 
-        public override ArrayList LoadData(string path, string className)
+        public override Dictionary<string, List<string>> LoadData(string path, string className)
         {
             VerifyCSV(path);
             return base.LoadData(path, className);

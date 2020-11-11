@@ -21,11 +21,11 @@ namespace CensusAnalyzerProject
             ICensusCSVLoader typeObj;
             ICensusCSVLoader headerObj;
             censusAnalyzerObj = new CensusAnalyzer();
-            filetype = new FileType(censusAnalyzerObj);
-            typeObj = new CSVType(filetype);
+            headerObj = new Header(censusAnalyzerObj);
+            typeObj = new CSVType(headerObj);
             delimiterObj = new Delimiter(typeObj);
-            headerObj = new Header(delimiterObj);
-            countObj = new Services(headerObj);
+            filetype = new FileType(delimiterObj);
+            countObj = new Services(filetype);
             return countObj;
         }
     }
