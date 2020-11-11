@@ -7,5 +7,6 @@ namespace CensusAnalyzerProject
     public interface ICount
     {
         public int GetCount(string path, string className);
+
     }
 }
