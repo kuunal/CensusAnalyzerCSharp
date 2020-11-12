@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using CensusAnalyzerProject.DTO;
 
 namespace CensusAnalyzerProjectTest
 {
@@ -175,12 +176,22 @@ namespace CensusAnalyzerProjectTest
         [Test]
         public void givenIndiaStateCensus_AndIndiaStateCode_WhenTogether_LoadsSuccessfully()
         {
-            Dictionary<string, List<CensusDAO>> map1 = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
+            CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
             Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_STATE_CODE_CSV_PATH, "IndianStateCodeDTO");
             Assert.IsTrue(map.ContainsKey("IndianStateCensusDTO"));
             Assert.IsTrue(map.ContainsKey("IndianStateCodeDTO"));
         }
 
+        [Test]
+        public void givenIndiaStateCensus_WhenToSortPopulation_ReturnsSortedPopulation()
+        {
+            Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
+            List<CensusDAO> sortedList = CSVObj.SortData(map, "population", "IndianStateCensusDTO");
+            Assert.AreEqual(3702, sortedList[0].population);
+            Assert.AreEqual(342239, sortedList[sortedList.Count-1].population);
+
+
+        }
 
 
     }
