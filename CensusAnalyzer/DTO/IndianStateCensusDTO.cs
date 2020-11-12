@@ -14,8 +14,8 @@ namespace CensusAnalyzerProject.DTO
         public IndianStateCensusDTO(string[] values)
         {
             this.state = values[0];
-            this.areaInSquareKiloMeter = long.Parse(values[1]);
-            this.population = long.Parse(values[2]);
+            this.areaInSquareKiloMeter = long.Parse(values[2]);
+            this.population = long.Parse(values[1]);
             this.densityPerSquareKiloMeter = long.Parse(values[3]);
         }
     }
