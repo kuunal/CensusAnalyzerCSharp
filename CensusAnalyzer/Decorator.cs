@@ -14,7 +14,7 @@ namespace CensusAnalyzerProject
         {
             this.censusCSVLoader = censusCSVLoader;
         }
-        public virtual Dictionary<string, List<IndianStateCensus>> LoadData(string path, string className)
+        public virtual Dictionary<string, List<CensusDAO>> LoadData(string path, string className)
         {
             return censusCSVLoader.LoadData(path, className);
         }

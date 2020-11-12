@@ -150,33 +150,33 @@ namespace CensusAnalyzerProjectTest
             }
         }
 
-        /*
+        
         [Test]
         public void givenIndianStateCensusCSV_WhenToSort_ReturnsSortedList()
         {
-            Dictionary<string, List<IndianStateCensus>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
-            List<string> sortedList = CSVObj.SortData(map, "state", "IndianStateCensusDTO");
-            Assert.AreEqual(sortedList[0].ToString(), "Andhra Pradesh,49386799,162968,303");
-            Assert.AreEqual(sortedList[sortedList.Count-1].ToString(), "West Bengal,91347736,88752,1029");
+            Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
+            List<CensusDAO> sortedList = CSVObj.SortData(map, "state", "IndianStateCensusDTO");
+            Assert.AreEqual("Andhra Pradesh", sortedList[0].state);
+            Assert.AreEqual("West Bengal", sortedList[sortedList.Count - 1].state);
         }
 
 
         [Test]
         public void givenIndianStateCodeCSV_WhenToSort_ReturnsSortedList()
         {
-            Dictionary<string, List<IndianStateCensus>> map = CSVObj.LoadData(INDIAN_STATE_CODE_CSV_PATH, "IndianStateCodeDTO");
-            List<string> sortedList = CSVObj.SortData(map, "stateCode", "IndianStateCodeDTO");
-            Assert.AreEqual("3,Andhra Pradesh New,37,AD", sortedList[0].ToString());
-            Assert.AreEqual("37,West Bengal,19,WB", sortedList[sortedList.Count - 1].ToString());
+            Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_STATE_CODE_CSV_PATH, "IndianStateCodeDTO");
+            List<CensusDAO> sortedList = CSVObj.SortData(map, "stateCode", "IndianStateCodeDTO");
+            Assert.AreEqual("AD", sortedList[0].stateCode);
+            Assert.AreEqual("WB", sortedList[sortedList.Count - 1].stateCode);
         }
-        */
+        
 
 
         [Test]
         public void givenIndiaStateCensus_AndIndiaStateCode_WhenTogether_LoadsSuccessfully()
         {
-            Dictionary<string, List<IndianStateCensus>> map1 = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
-            Dictionary<string, List<IndianStateCensus>> map = CSVObj.LoadData(INDIAN_STATE_CODE_CSV_PATH, "IndianStateCodeDTO");
+            Dictionary<string, List<CensusDAO>> map1 = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
+            Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_STATE_CODE_CSV_PATH, "IndianStateCodeDTO");
             Assert.IsTrue(map1.ContainsKey("IndianStateCensusDTO"));
             Assert.IsTrue(map.ContainsKey("IndianStateCodeDTO"));
         }

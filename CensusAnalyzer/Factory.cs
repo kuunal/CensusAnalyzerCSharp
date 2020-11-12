@@ -8,7 +8,7 @@ namespace CensusAnalyzerProject
     {
         public ISort GetSort()
         {
-            return new QuickSort();
+            return new Order();
         }
 
         

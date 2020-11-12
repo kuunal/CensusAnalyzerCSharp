@@ -15,7 +15,7 @@ namespace CensusAnalyzerProject
 
     
 
-        public override Dictionary<string, List<IndianStateCensus>> LoadData(string path, string className)
+        public override Dictionary<string, List<CensusDAO>> LoadData(string path, string className)
         {
             return base.LoadData(path, className);
         }
@@ -25,12 +25,12 @@ namespace CensusAnalyzerProject
             return LoadData(path, className)[className].Count;
         }
 
-        public List<string> SortData(Dictionary<string, List<string>> dict, string field, string className)
+        public List<CensusDAO> SortData(Dictionary<string, List<CensusDAO>> dict, string field, string className)
         {
             Factory factory = new Factory();
             ISort sortObj = factory.GetSort();
-            List<string> list = dict[className];
-            List<string> sortedList = sortObj.sort(list, field);
+            List<CensusDAO> list = dict[className];
+            List<CensusDAO> sortedList = sortObj.sort(list, field);
             string data = JsonConvert.SerializeObject(sortedList);
             File.WriteAllText(JSON_FILE_PATH, data);
             return sortedList;

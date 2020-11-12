@@ -16,7 +16,7 @@ namespace CensusAnalyzerProject
         {
         }
 
-        public override Dictionary<string, List<IndianStateCensus>> LoadData(string path, string className)
+        public override Dictionary<string, List<CensusDAO>> LoadData(string path, string className)
         {
             VerifyCSV(path);
             return base.LoadData(path, className);

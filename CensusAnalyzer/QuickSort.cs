@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CensusAnalyzerProject.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +10,7 @@ namespace CensusAnalyzerProject
     {
         ArrayList list = new ArrayList();
 
-        public List<string> sort(List<string> data, string field)
+        public List<CensusDAO> sort(List<CensusDAO> data, string field)
         {
             string[] headers = data[0].ToString().Split(",");
             int headerIndex = Array.IndexOf(headers, field);
@@ -18,7 +19,7 @@ namespace CensusAnalyzerProject
             return data;
         }
 
-        private void Partition(int headerIndex, List<string> data, int left, int right)
+        private void Partition(int headerIndex, List<CensusDAO> data, int left, int right)
         {
             if (left < right) { 
                 int pi = Quick(headerIndex, data, left, right);
@@ -27,7 +28,7 @@ namespace CensusAnalyzerProject
             }
         }
 
-        private int Quick(int headerIndex, List<string> data, int left, int right)
+        private int Quick(int headerIndex, List<CensusDAO> data, int left, int right)
         {
             string pi = data[right].ToString().Split(",")[headerIndex];
             int piINdex = left;
@@ -44,7 +45,7 @@ namespace CensusAnalyzerProject
             return piINdex;
         }
 
-        public void swap(List<string> data, int element1, int element2)
+        public void swap(List<CensusDAO> data, int element1, int element2)
         {
             var temp = data[element1];
             data[element1] = data[element2];

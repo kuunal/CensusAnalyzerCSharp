@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CensusAnalyzerProject.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -7,6 +8,6 @@ namespace CensusAnalyzerProject
 {
     public interface ISort
     {
-        public  List<string> sort(List<string> data, string field);
+        public  List<CensusDAO> sort(List<CensusDAO> data, string field);
     }
 }
