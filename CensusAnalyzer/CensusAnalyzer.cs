@@ -16,12 +16,12 @@ namespace CensusAnalyzerProject
             Console.WriteLine("Hello World!");
         }
 
+        static Dictionary<string, List<CensusDAO>> map = new Dictionary<string, List<CensusDAO>>();
 
 
         public Dictionary<string, List<CensusDAO>> LoadData(string path, string className)
         {
             List<CensusDAO> data = new List<CensusDAO>();
-            Dictionary<string, List<CensusDAO>> map = new Dictionary<string, List<CensusDAO>>();
             if (File.Exists(path))
             {
                 string[] rows = File.ReadAllLines(path);
@@ -34,8 +34,13 @@ namespace CensusAnalyzerProject
                 }
 
             }
+            try { 
                 map.Add(className, data);
-            
+            }
+            catch (System.ArgumentException)
+            {
+                map[className] = data;
+            }
             return map;
         }
     }
