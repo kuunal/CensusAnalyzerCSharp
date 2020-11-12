@@ -235,6 +235,18 @@ namespace CensusAnalyzerProjectTest
             }
         }
 
-        
+        [Test]
+        public void givenCorrectUSCensusCSV_WhenTypeIncorrect_ThrowsException()
+        {
+            try
+            {
+                CSVObj.GetCount(US_CENSUS_CSV_PATH, "wrong type");
+            }
+            catch (CensusAnalyzerExceptions e)
+            {
+                Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_TYPE, e.ExceptionType);
+            }
+        }
+
     }
 }
