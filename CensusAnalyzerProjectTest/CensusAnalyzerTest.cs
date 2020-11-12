@@ -254,11 +254,25 @@ namespace CensusAnalyzerProjectTest
         {
             try
             {
-                CSVObj.LoadData(WRONG_US_CENSUS_CSV_DELIMITER_PATH , "IndianStateCensusDTO");
+                CSVObj.LoadData(WRONG_US_CENSUS_CSV_DELIMITER_PATH , "USCensusDTO");
             }
             catch (CensusAnalyzerExceptions e)
             {
                 Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_DELIMITER, e.ExceptionType);
+            }
+        }
+
+
+        [Test]
+        public void givenUSCensusCSV_WhenIncorrectHeader_ThrowsException()
+        {
+            try
+            {
+                CSVObj.GetCount(WRONG_US_CENSUS_CSV_HEADER_PATH, "USCensusDTO");
+            }
+            catch (CensusAnalyzerExceptions e)
+            {
+                Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_HEADER, e.ExceptionType);
             }
         }
 
