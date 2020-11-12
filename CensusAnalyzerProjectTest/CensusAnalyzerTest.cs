@@ -248,5 +248,19 @@ namespace CensusAnalyzerProjectTest
             }
         }
 
+
+        [Test]
+        public void givenUSCensusCSV_WhenIncorrectDelimiter_ThrowsException()
+        {
+            try
+            {
+                CSVObj.LoadData(WRONG_US_CENSUS_CSV_DELIMITER_PATH , "IndianStateCensusDTO");
+            }
+            catch (CensusAnalyzerExceptions e)
+            {
+                Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_DELIMITER, e.ExceptionType);
+            }
+        }
+
     }
 }
