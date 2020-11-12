@@ -1,4 +1,5 @@
-﻿using CensusAnalyzerProject.Models;
+﻿using CensusAnalyzerProject.DTO;
+using CensusAnalyzerProject.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
