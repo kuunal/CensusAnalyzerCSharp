@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CensusAnalyzerProject.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,14 +15,14 @@ namespace CensusAnalyzerProject
 
     
 
-        public override Dictionary<string, List<string>> LoadData(string path, string className)
+        public override Dictionary<string, List<IndianStateCensus>> LoadData(string path, string className)
         {
             return base.LoadData(path, className);
         }
 
         public int GetCount(string path, string className)
         {
-            return LoadData(path, className)[className].Count-1;
+            return LoadData(path, className)[className].Count;
         }
 
         public List<string> SortData(Dictionary<string, List<string>> dict, string field, string className)
