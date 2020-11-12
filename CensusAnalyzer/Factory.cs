@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CensusAnalyzerProject.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,13 +7,17 @@ namespace CensusAnalyzerProject
 {
     public class Factory
     {
-        public ISort GetSort()
+        public ISort GetSort(CustomEnums.sort sorttype)
         {
-            return new Order();
+            if(CustomEnums.sort.ASCENDING.Equals(sorttype))
+            {
+                return new AscendingOrder();
+            }
+            return new DescendingOrder();
         }
+    
 
-        
-        public Services GetCSVLoader()
+    public Services GetCSVLoader()
         {
             ICensusCSVLoader censusAnalyzerObj;
             ICensusCSVLoader filetype;
