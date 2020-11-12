@@ -30,9 +30,9 @@ namespace CensusAnalyzerProject
             string[] headerArray = headers.Split(",");
             Type type = Type.GetType("CensusAnalyzerProject.DTO." + className);
             FieldInfo[] fields = type.GetFields(); 
-            foreach(string header in headerArray)
+            foreach(FieldInfo field in fields)
             {
-                if (!Array.Exists<FieldInfo>(fields, field => header.ToLower().Equals(field.Name.ToLower())))
+                if (!Array.Exists<string>(headerArray, header => header.ToLower().Equals(field.Name.ToLower())))
                 {
                     throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_HEADER);
                 }
