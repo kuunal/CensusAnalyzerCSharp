@@ -15,6 +15,8 @@ namespace CensusAnalyzerProject.Models
         public string stateCode;
         public string stateName;
         public int tIN;
+        public double area;
+        public double density;
 
         public CensusDAO(IndianStateCensusDTO indianStateCensus)
         {
@@ -32,9 +34,13 @@ namespace CensusAnalyzerProject.Models
             this.tIN = indianStateCodeDAO.tIN;
         }
 
-        //public IndianStateCensusDTO GetStateCensusDTO() { 
-            
-        //}
+        public CensusDAO(USCensusDTO uSCensusDTO)
+        {
+            this.state = uSCensusDTO.state;
+            this.population = uSCensusDTO.population;
+            this.area = uSCensusDTO.area;
+            this.density = uSCensusDTO.density;
+        }
 
     }
 }
