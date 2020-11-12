@@ -34,7 +34,7 @@ namespace CensusAnalyzerProjectTest
         public void givenIndianCensusCSV_WhenCorrect_ReturnsNumberOfRecords()
         {
             
-            int count = CSVObj.GetCount(INDIAN_CENSUS_CSV_PATH, "IndianStateCensus");
+            int count = CSVObj.GetCount(INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
             Assert.AreEqual(29, count);
         }
 
@@ -43,7 +43,7 @@ namespace CensusAnalyzerProjectTest
         {
             try
             {
-                int count = CSVObj.GetCount(WRONG_INDIAN_CENSUS_CSV_PATH, "IndianStateCensus");
+                int count = CSVObj.GetCount(WRONG_INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
             }
             catch (CensusAnalyzerExceptions e)
             {
@@ -67,7 +67,7 @@ namespace CensusAnalyzerProjectTest
         public void givenIndiaCensusCSV_WhenIncorrectDelimiter_ThrowsException()
         {
             try { 
-                CSVObj.LoadData(WRONG_INDIAN_CENSUS_CSV_DELIMITER_PATH, "IndianStateCensus");
+                CSVObj.LoadData(WRONG_INDIAN_CENSUS_CSV_DELIMITER_PATH, "IndianStateCensusDTO");
             }catch(CensusAnalyzerExceptions e)
             {
                 Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_DELIMITER, e.ExceptionType);
@@ -79,7 +79,7 @@ namespace CensusAnalyzerProjectTest
         {
             try
             {
-                CSVObj.GetCount(WRONG_INDIAN_CENSUS_CSV_HEADER_PATH, "IndianStateCensus");
+                CSVObj.GetCount(WRONG_INDIAN_CENSUS_CSV_HEADER_PATH, "IndianStateCensusDTO");
             }
             catch (CensusAnalyzerExceptions e)
             {
@@ -92,7 +92,7 @@ namespace CensusAnalyzerProjectTest
         public void givenIndianStateCodeCSV_WhenCorrect_ReturnsNumberOfRecords()
         {
 
-            int count = CSVObj.GetCount(INDIAN_STATE_CODE_CSV_PATH, "IndianStateCode");
+            int count = CSVObj.GetCount(INDIAN_STATE_CODE_CSV_PATH, "IndianStateCodeDTO");
             Assert.AreEqual(37, count);
         }
 
@@ -103,7 +103,7 @@ namespace CensusAnalyzerProjectTest
         {
             try
             {
-                CSVObj.GetCount(WRONG_INDIA_STATE_CODE_PATH, "IndianStateCode");
+                CSVObj.GetCount(WRONG_INDIA_STATE_CODE_PATH, "IndianStateCodeDTO");
             }
             catch (CensusAnalyzerExceptions e)
             {
@@ -129,7 +129,7 @@ namespace CensusAnalyzerProjectTest
         {
             try
             {
-                CSVObj.LoadData(WRONG_INDIA_STATE_CODE_CSV_DELIMITER_PATH, "IndianStateCensus");
+                CSVObj.LoadData(WRONG_INDIA_STATE_CODE_CSV_DELIMITER_PATH, "IndianStateCensusDTO");
             }
             catch (CensusAnalyzerExceptions e)
             {
@@ -142,7 +142,7 @@ namespace CensusAnalyzerProjectTest
         {
             try
             {
-                CSVObj.GetCount(WRONG_INDIA_STATE_CODE_HEADER_PATH, "IndianStateCensus");
+                CSVObj.GetCount(WRONG_INDIA_STATE_CODE_HEADER_PATH, "IndianStateCensusDTO");
             }
             catch (CensusAnalyzerExceptions e)
             {
@@ -150,11 +150,12 @@ namespace CensusAnalyzerProjectTest
             }
         }
 
+        /*
         [Test]
         public void givenIndianStateCensusCSV_WhenToSort_ReturnsSortedList()
         {
-            Dictionary<string, List<string>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensus");
-            List<string> sortedList = CSVObj.SortData(map, "state", "IndianStateCensus");
+            Dictionary<string, List<IndianStateCensus>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
+            List<string> sortedList = CSVObj.SortData(map, "state", "IndianStateCensusDTO");
             Assert.AreEqual(sortedList[0].ToString(), "Andhra Pradesh,49386799,162968,303");
             Assert.AreEqual(sortedList[sortedList.Count-1].ToString(), "West Bengal,91347736,88752,1029");
         }
@@ -163,11 +164,23 @@ namespace CensusAnalyzerProjectTest
         [Test]
         public void givenIndianStateCodeCSV_WhenToSort_ReturnsSortedList()
         {
-            Dictionary<string, List<string>> map = CSVObj.LoadData(INDIAN_STATE_CODE_CSV_PATH, "IndianStateCode");
-            List<string> sortedList = CSVObj.SortData(map, "stateCode", "IndianStateCode");
+            Dictionary<string, List<IndianStateCensus>> map = CSVObj.LoadData(INDIAN_STATE_CODE_CSV_PATH, "IndianStateCodeDTO");
+            List<string> sortedList = CSVObj.SortData(map, "stateCode", "IndianStateCodeDTO");
             Assert.AreEqual("3,Andhra Pradesh New,37,AD", sortedList[0].ToString());
             Assert.AreEqual("37,West Bengal,19,WB", sortedList[sortedList.Count - 1].ToString());
         }
+        */
+
+
+        [Test]
+        public void givenIndiaStateCensus_AndIndiaStateCode_WhenTogether_LoadsSuccessfully()
+        {
+            Dictionary<string, List<IndianStateCensus>> map1 = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
+            Dictionary<string, List<IndianStateCensus>> map = CSVObj.LoadData(INDIAN_STATE_CODE_CSV_PATH, "IndianStateCodeDTO");
+            Assert.IsTrue(map1.ContainsKey("IndianStateCensusDTO"));
+            Assert.IsTrue(map.ContainsKey("IndianStateCodeDTO"));
+        }
+
 
 
     }

@@ -1,4 +1,5 @@
 ﻿using CensusAnalyzerProject.Exceptions;
+using CensusAnalyzerProject.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace CensusAnalyzerProject
     public class Delimiter : Decorator
     {
         public Delimiter(ICensusCSVLoader censusCSVLoader) : base(censusCSVLoader) { }
-        public override Dictionary<string, List<string>> LoadData(string path, string className)
+        public override Dictionary<string, List<IndianStateCensus>> LoadData(string path, string className)
         {
             using (StreamReader reader = new StreamReader(path)) 
             {

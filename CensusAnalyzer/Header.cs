@@ -1,4 +1,5 @@
 ﻿using CensusAnalyzerProject.Exceptions;
+using CensusAnalyzerProject.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace CensusAnalyzerProject
         {
         }
 
-        public override Dictionary<string, List<string>> LoadData(string path, string className)
+        public override Dictionary<string, List<IndianStateCensus>> LoadData(string path, string className)
         {
             using (StreamReader reader = new StreamReader(path))
             {
@@ -26,12 +27,12 @@ namespace CensusAnalyzerProject
 
         public void ValidateHeaders(string headers, string className)
         {
-            string[] header = headers.Split(",");
-            Type type = Type.GetType("CensusAnalyzerProject.Models." + className);
-            PropertyInfo[] properties = type.GetProperties(); 
-            foreach(PropertyInfo property in properties)
+            string[] headerArray = headers.Split(",");
+            Type type = Type.GetType("CensusAnalyzerProject.DTO." + className);
+            FieldInfo[] fields = type.GetFields(); 
+            foreach(string header in headerArray)
             {
-                if (!Array.Exists<string>(header, rawHeaders => rawHeaders.ToLower().Equals(property.Name.ToLower())))
+                if (!Array.Exists<FieldInfo>(fields, field => header.ToLower().Equals(field.Name.ToLower())))
                 {
                     throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_HEADER);
                 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CensusAnalyzerProject.Models;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +14,7 @@ namespace CensusAnalyzerProject
         {
             this.censusCSVLoader = censusCSVLoader;
         }
-        public virtual Dictionary<string, List<string>> LoadData(string path, string className)
+        public virtual Dictionary<string, List<IndianStateCensus>> LoadData(string path, string className)
         {
             return censusCSVLoader.LoadData(path, className);
         }
