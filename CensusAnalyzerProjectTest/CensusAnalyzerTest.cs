@@ -177,7 +177,7 @@ namespace CensusAnalyzerProjectTest
         {
             Dictionary<string, List<CensusDAO>> map1 = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
             Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_STATE_CODE_CSV_PATH, "IndianStateCodeDTO");
-            Assert.IsTrue(map1.ContainsKey("IndianStateCensusDTO"));
+            Assert.IsTrue(map.ContainsKey("IndianStateCensusDTO"));
             Assert.IsTrue(map.ContainsKey("IndianStateCodeDTO"));
         }
 
