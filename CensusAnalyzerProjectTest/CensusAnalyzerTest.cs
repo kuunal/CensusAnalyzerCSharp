@@ -22,6 +22,9 @@ namespace CensusAnalyzerProjectTest
         const string WRONG_INDIA_STATE_CODE_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/utilities/IndiaStateCode.txt";
         const string WRONG_INDIA_STATE_CODE_HEADER_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/utilities/WrongIndiaStateCode.csv";
         const string US_CENSUS_CSV_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/utilities/USCensusData.csv";
+        const string WRONG_US_CENSUS_CSV_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/utilities/USCensusData.txt";
+        const string WRONG_US_CENSUS_CSV_DELIMITER_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/utilities/WrongDelimiterUSCSV.csv";
+        const string WRONG_US_CENSUS_CSV_HEADER_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/utilities/WrongHeaderUSCSV.csv";
 
         Factory factory = new Factory();
         Services CSVObj;
@@ -217,5 +220,21 @@ namespace CensusAnalyzerProjectTest
             int count = CSVObj.GetCount(US_CENSUS_CSV_PATH, "USCensusDTO");
             Assert.AreEqual(51, count);
         }
+
+
+        [Test]
+        public void givenUSCensusCSV_WhenIncorrect_ThrowsException()
+        {
+            try
+            {
+                int count = CSVObj.GetCount(WRONG_US_CENSUS_CSV_PATH, "USCensusDTO");
+            }
+            catch (CensusAnalyzerExceptions e)
+            {
+                Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_FILE, e.ExceptionType);
+            }
+        }
+
+        
     }
 }
