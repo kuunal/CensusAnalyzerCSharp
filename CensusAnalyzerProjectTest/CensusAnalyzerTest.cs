@@ -21,6 +21,7 @@ namespace CensusAnalyzerProjectTest
         const string WRONG_INDIA_STATE_CODE_CSV_DELIMITER_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/utilities/IndiaStateCode - Copy.csv";
         const string WRONG_INDIA_STATE_CODE_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/utilities/IndiaStateCode.txt";
         const string WRONG_INDIA_STATE_CODE_HEADER_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/utilities/WrongIndiaStateCode.csv";
+        const string US_CENSUS_CSV_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/utilities/USCensusData.csv";
 
         Factory factory = new Factory();
         Services CSVObj;
@@ -210,5 +211,11 @@ namespace CensusAnalyzerProjectTest
             Assert.AreEqual(3702, sortedList[sortedList.Count - 1].areaInSquareKiloMeter);
         }
 
+        [Test]
+        public void givenUSCensusCSV_WhenCorrect_ReturnsCount()
+        {
+            int count = CSVObj.GetCount(US_CENSUS_CSV_PATH, "USCensusDTO");
+            Assert.AreEqual(51, count);
+        }
     }
 }
