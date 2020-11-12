@@ -187,10 +187,17 @@ namespace CensusAnalyzerProjectTest
         {
             Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
             List<CensusDAO> sortedList = CSVObj.SortData(map, "population", "IndianStateCensusDTO");
-            Assert.AreEqual(3702, sortedList[0].population);
-            Assert.AreEqual(342239, sortedList[sortedList.Count-1].population);
+            Assert.AreEqual(607688, sortedList[0].population);
+            Assert.AreEqual(199812341, sortedList[sortedList.Count-1].population);
+        }
 
-
+        [Test]
+        public void givenIndiaStateCensus_WhenToSortPopulationDensity_ReturnsSortedPopulationDensity()
+        {
+            Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
+            List<CensusDAO> sortedList = CSVObj.SortData(map, "densityPerSquareKiloMeter", "IndianStateCensusDTO");
+            Assert.AreEqual(50, sortedList[0].densityPerSquareKiloMeter);
+            Assert.AreEqual(1102, sortedList[sortedList.Count - 1].densityPerSquareKiloMeter);
         }
 
 
