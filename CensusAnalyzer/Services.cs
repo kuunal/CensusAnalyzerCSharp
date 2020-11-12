@@ -1,4 +1,5 @@
 ﻿using CensusAnalyzerProject.DTO;
+using CensusAnalyzerProject.Enums;
 using CensusAnalyzerProject.Models;
 using Newtonsoft.Json;
 using System;
@@ -26,10 +27,10 @@ namespace CensusAnalyzerProject
             return LoadData(path, className)[className].Count;
         }
 
-        public List<CensusDAO> SortData(Dictionary<string, List<CensusDAO>> dict, string field, string className)
+        public List<CensusDAO> SortData(Dictionary<string, List<CensusDAO>> dict, string field, string className, CustomEnums.sort sorttype)
         {
             Factory factory = new Factory();
-            ISort sortObj = factory.GetSort();
+            ISort sortObj = factory.GetSort(sorttype);
             List<CensusDAO> list = dict[className];
             List<CensusDAO> sortedList = sortObj.sort(list, field);
             string data = JsonConvert.SerializeObject(sortedList);
