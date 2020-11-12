@@ -27,12 +27,20 @@ namespace CensusAnalyzerProject
                 string[] rows = File.ReadAllLines(path);
                 foreach (string record in rows.Skip(1)) {   
                     string[] values = record.Split(",");
-                    if (className == "IndianStateCensusDTO")
-                        data.Add(new CensusDAO(new IndianStateCensusDTO(values)));
-                    else
-                        data.Add(new CensusDAO(new IndianStateCodeDTO(values)));
+                    switch(className){
+                        case "IndianStateCensusDTO":
+                            data.Add(new CensusDAO(new IndianStateCensusDTO(values)));
+                            break;
+                        case "USCensusDTO":
+                            data.Add(new CensusDAO(new USCensusDTO(values)));
+                            break;
+                        case "IndianStateCodeDTO":
+                            data.Add(new CensusDAO(new IndianStateCodeDTO(values)));
+                            break;
+                        default:
+                            throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_HEADER);
+                    }
                 }
-
             }
             try { 
                 map.Add(className, data);
