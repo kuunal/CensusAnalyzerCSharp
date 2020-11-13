@@ -7,6 +7,6 @@ namespace CensusAnalyzerProject
 {
     public interface CountryAdaptor
     {
-        public Dictionary<string, List<CensusDAO>> CSVParser(string[] rows, string className);
+        public List<CensusDAO> CSVParser(string[] rows, string className);
     }
 }
