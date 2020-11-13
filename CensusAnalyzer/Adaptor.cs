@@ -18,14 +18,14 @@ namespace CensusAnalyzerProject
             string[] rows= base.LoadData(path, className);
             Factory factory = new Factory();
             CountryAdaptor adaptorObj = factory.GetCountryCensus(className);
-            Dictionary<string, List<CensusDAO>> censusDict = adaptorObj.CSVParser(rows, className);
+            List<CensusDAO> censusList = adaptorObj.CSVParser(rows, className);
             try
             {
-                dict.Add(className, censusDict[className]);
+                dict.Add(className, censusList);
             }
             catch (System.ArgumentException)
             {
-                dict[className] = censusDict[className];
+                dict[className] = censusList;
             }
             return dict;
         }
