@@ -10,7 +10,7 @@ namespace CensusAnalyzerProject
 {
     class IndianAdaptee : CountryAdaptor
     {
-        public Dictionary<string, List<CensusDAO>> CSVParser(string[] rows, string className)
+        public List<CensusDAO> CSVParser(string[] rows, string className)
         {
             Dictionary<string, List<CensusDAO>> censusData = new Dictionary<string, List<CensusDAO>>();
             List<CensusDAO> data = new List<CensusDAO>();
@@ -30,15 +30,7 @@ namespace CensusAnalyzerProject
                             throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_HEADER);
                     }
                 }
-                try
-                {
-                    censusData.Add(className, data);
-                }
-                catch (System.ArgumentException)
-                {
-                    censusData[className] = data;
-                }
-                return censusData;
+                return data;
             }
         }
     }
