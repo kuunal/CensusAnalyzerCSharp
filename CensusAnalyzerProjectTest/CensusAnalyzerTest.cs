@@ -161,7 +161,7 @@ namespace CensusAnalyzerProjectTest
         public void givenIndianStateCensusCSV_WhenToSort_ReturnsSortedList()
         {
             Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
-            List<CensusDAO> sortedList = CSVObj.SortData(map, "state", "IndianStateCensusDTO", CustomEnums.sort.ASCENDING);
+            List<CensusDAO> sortedList = CSVObj.SortData( "state", "IndianStateCensusDTO", CustomEnums.sort.ASCENDING);
             Assert.AreEqual("Andhra Pradesh", sortedList[0].state);
             Assert.AreEqual("West Bengal", sortedList[sortedList.Count - 1].state);
         }
@@ -171,7 +171,7 @@ namespace CensusAnalyzerProjectTest
         public void givenIndianStateCodeCSV_WhenToSort_ReturnsSortedList()
         {
             Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_STATE_CODE_CSV_PATH, "IndianStateCodeDTO");
-            List<CensusDAO> sortedList = CSVObj.SortData(map, "stateCode", "IndianStateCodeDTO", CustomEnums.sort.ASCENDING);
+            List<CensusDAO> sortedList = CSVObj.SortData( "stateCode", "IndianStateCodeDTO", CustomEnums.sort.ASCENDING);
             Assert.AreEqual("AD", sortedList[0].stateCode);
             Assert.AreEqual("WB", sortedList[sortedList.Count - 1].stateCode);
         }
@@ -191,7 +191,7 @@ namespace CensusAnalyzerProjectTest
         public void givenIndiaStateCensus_WhenToSortPopulation_ReturnsSortedPopulation()
         {
             Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
-            List<CensusDAO> sortedList = CSVObj.SortData(map, "population", "IndianStateCensusDTO", CustomEnums.sort.DESCENDING);
+            List<CensusDAO> sortedList = CSVObj.SortData( "population", "IndianStateCensusDTO", CustomEnums.sort.DESCENDING);
             Assert.AreEqual(199812341, sortedList[0].population);
             Assert.AreEqual(607688, sortedList[sortedList.Count-1].population);
         }
@@ -200,7 +200,7 @@ namespace CensusAnalyzerProjectTest
         public void givenIndiaStateCensus_WhenToSortPopulationDensity_ReturnsSortedPopulationDensity()
         {
             Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
-            List<CensusDAO> sortedList = CSVObj.SortData(map, "densityPerSquareKiloMeter", "IndianStateCensusDTO", CustomEnums.sort.DESCENDING);
+            List<CensusDAO> sortedList = CSVObj.SortData( "densityPerSquareKiloMeter", "IndianStateCensusDTO", CustomEnums.sort.DESCENDING);
             Assert.AreEqual(1102, sortedList[0].densityPerSquareKiloMeter);
             Assert.AreEqual(50, sortedList[sortedList.Count - 1].densityPerSquareKiloMeter);
         }
@@ -209,7 +209,7 @@ namespace CensusAnalyzerProjectTest
         public void givenIndiaStateCensus_WhenToSortArea_ReturnsSortedArea()
         {
             Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH, "IndianStateCensusDTO");
-            List<CensusDAO> sortedList = CSVObj.SortData(map, "areaInSquareKiloMeter", "IndianStateCensusDTO", CustomEnums.sort.DESCENDING);
+            List<CensusDAO> sortedList = CSVObj.SortData( "areaInSquareKiloMeter", "IndianStateCensusDTO", CustomEnums.sort.DESCENDING);
             Assert.AreEqual(342239, sortedList[0].areaInSquareKiloMeter);
             Assert.AreEqual(3702, sortedList[sortedList.Count - 1].areaInSquareKiloMeter);
         }
@@ -274,6 +274,16 @@ namespace CensusAnalyzerProjectTest
             {
                 Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_HEADER, e.ExceptionType);
             }
+        }
+
+
+        [Test]
+        public void givenUSCensus_WhenToSortPopulation_ReturnsSortedPopulation()
+        {
+            Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(US_CENSUS_CSV_PATH, "USCensusDTO");
+            List<CensusDAO> sortedList = CSVObj.SortData( "population", "USCensusDTO", CustomEnums.sort.DESCENDING);
+            Assert.AreEqual(37253956, sortedList[0].population);
+            Assert.AreEqual(563626, sortedList[sortedList.Count - 1].population);
         }
 
     }
