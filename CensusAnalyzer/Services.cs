@@ -33,6 +33,10 @@ namespace CensusAnalyzerProject
             ISort sortObj = factory.GetSort(sorttype);
             List<CensusDAO> list = dict[className];
             List<CensusDAO> sortedList = sortObj.sort(list, field);
+            if (CustomEnums.sort.DESCENDING.Equals(sorttype))
+            {
+                sortedList.Reverse();
+            }
             string data = JsonConvert.SerializeObject(sortedList);
             File.WriteAllText(JSON_FILE_PATH, data);
             return sortedList;

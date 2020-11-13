@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CensusAnalyzerProject
 {
-    public class AscendingOrder : ISort
+    public class Order : ISort
     {
         public List<CensusDAO> sort(List<CensusDAO> data, string field)
         {

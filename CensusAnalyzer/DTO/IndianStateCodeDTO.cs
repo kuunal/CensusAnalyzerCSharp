@@ -10,7 +10,9 @@ namespace CensusAnalyzerProject.DTO
         public int srNo;
         public string stateName;
         public string stateCode;
-        public int tIN; 
+        public int tIN;
+    
+
         public IndianStateCodeDTO(string[] values)
         {
             this.srNo = Convert.ToInt32(values[0]);

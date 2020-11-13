@@ -1,4 +1,6 @@
-﻿using CensusAnalyzerProject.Enums;
+﻿using CensusAnalyzerProject.DTO;
+using CensusAnalyzerProject.Enums;
+using CensusAnalyzerProject.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,11 +11,7 @@ namespace CensusAnalyzerProject
     {
         public ISort GetSort(CustomEnums.sort sorttype)
         {
-            if(CustomEnums.sort.ASCENDING.Equals(sorttype))
-            {
-                return new AscendingOrder();
-            }
-            return new DescendingOrder();
+                return new Order();
         }
     
 
@@ -25,13 +23,27 @@ namespace CensusAnalyzerProject
             ICensusCSVLoader delimiterObj;
             ICensusCSVLoader typeObj;
             ICensusCSVLoader headerObj;
-            censusAnalyzerObj = new CensusAnalyzer();
+            censusAnalyzerObj = new Adaptor();
             headerObj = new Header(censusAnalyzerObj);
             typeObj = new CSVType(headerObj);
             delimiterObj = new Delimiter(typeObj);
             filetype = new FileType(delimiterObj);
             countObj = new Services(filetype);
             return countObj;
+        }
+
+        public CountryAdaptor GetCountryCensus(string className)
+        {
+            switch (className)
+            {
+                case "USCensusDTO":
+                    return new USAdaptee();
+                case "IndianStateCodeDTO":
+                case "IndianStateCensusDTO":
+                    return new IndianAdaptee();
+                default:
+                    throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_TYPE);
+            }
         }
     }
 }
