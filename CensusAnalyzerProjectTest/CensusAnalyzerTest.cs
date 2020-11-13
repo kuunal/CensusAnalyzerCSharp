@@ -286,5 +286,13 @@ namespace CensusAnalyzerProjectTest
             Assert.AreEqual(563626, sortedList[sortedList.Count - 1].population);
         }
 
+        [Test]
+        public void givenUSCensus_WhenToSortArea_ReturnsSortedPopulation()
+        {
+            Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(US_CENSUS_CSV_PATH, "USCensusDTO");
+            List<CensusDAO> sortedList = CSVObj.SortData("area", "USCensusDTO", CustomEnums.sort.DESCENDING);
+            Assert.AreEqual(1723338.01d, sortedList[0].area);
+            Assert.AreEqual(177.0d, sortedList[sortedList.Count - 1].area);
+        }
     }
 }
