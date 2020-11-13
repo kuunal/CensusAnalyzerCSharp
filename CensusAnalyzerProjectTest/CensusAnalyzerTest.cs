@@ -294,5 +294,15 @@ namespace CensusAnalyzerProjectTest
             Assert.AreEqual(1723338.01d, sortedList[0].area);
             Assert.AreEqual(177.0d, sortedList[sortedList.Count - 1].area);
         }
+
+        [Test]
+        public void givenUSCensus_WhenToSortDensity_ReturnsSortedPopulation()
+        {
+            Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(US_CENSUS_CSV_PATH, "USCensusDTO");
+            List<CensusDAO> sortedList = CSVObj.SortData("density", "USCensusDTO", CustomEnums.sort.DESCENDING);
+            Assert.AreEqual(3805.6100000000001d, sortedList[0].density);
+            Assert.AreEqual(0.46000000000000002d, sortedList[sortedList.Count - 1].density);
+        }
+
     }
 }
