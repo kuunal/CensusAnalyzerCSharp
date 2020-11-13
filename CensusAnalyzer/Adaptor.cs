@@ -9,13 +9,14 @@ using System.Linq;
 
 namespace CensusAnalyzerProject
 {
-    public class Adaptor : Loader, ICensusCSVLoader
+    public class Adaptor : ICensusCSVLoader
     {
         static Dictionary<string, List<CensusDAO>> dict = new Dictionary<string, List<CensusDAO>>();
 
-        public new Dictionary<string, List<CensusDAO>> LoadData(string path, string className)
+        public Dictionary<string, List<CensusDAO>> LoadData(string path, string className)
         {
-            string[] rows= base.LoadData(path, className);
+            Loader loader = new Loader();
+            string[] rows= loader.LoadData(path, className);
             Factory factory = new Factory();
             CountryAdaptor adaptorObj = factory.GetCountryCensus(className);
             List<CensusDAO> censusList = adaptorObj.CSVParser(rows, className);
