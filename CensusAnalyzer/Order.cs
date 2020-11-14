@@ -9,11 +9,17 @@ namespace CensusAnalyzerProject
 {
     public class Order : ISort
     {
-        public List<CensusDAO> sort(List<CensusDAO> data, string field)
+        public List<CensusDAO> sort(List<CensusDAO> data, string field, string anotherField)
         {
             Type type = typeof(CensusDAO);
             var fields = type.GetField(field);
-            return data.OrderBy(row => fields.GetValue(row)).ToList();
+            try { 
+                var anotherfields = type.GetField(anotherField);
+                return data.OrderBy(row => fields.GetValue(row)).ThenBy(row => anotherfields.GetValue(row)).ToList();
+            }
+            catch (System.ArgumentNullException) { 
+                return data.OrderBy(row => fields.GetValue(row)).ToList();
+            }
         }
     }
 }
