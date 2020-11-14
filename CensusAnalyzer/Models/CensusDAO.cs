@@ -9,8 +9,6 @@ namespace CensusAnalyzerProject.Models
     {
         public string state;
         public long population;
-        public long areaInSquareKiloMeter;
-        public long densityPerSquareKiloMeter;
         public int srNo;
         public string stateCode;
         public string stateName;
@@ -22,8 +20,8 @@ namespace CensusAnalyzerProject.Models
         {
             this.state = indianStateCensus.state;
             this.population = indianStateCensus.population;
-            this.areaInSquareKiloMeter = indianStateCensus.areaInSquareKiloMeter;
-            this.densityPerSquareKiloMeter = indianStateCensus.densityPerSquareKiloMeter;
+            this.area= indianStateCensus.areaInSquareKiloMeter;
+            this.density= indianStateCensus.densityPerSquareKiloMeter;
         }
 
         public CensusDAO(IndianStateCodeDTO indianStateCodeDAO)
