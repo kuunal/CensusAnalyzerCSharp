@@ -8,6 +8,6 @@ namespace CensusAnalyzerProject
 {
     public interface ISort
     {
-        public  List<CensusDAO> sort(List<CensusDAO> data, string field);
+        public  List<CensusDAO> sort(List<CensusDAO> data, string field, string anotherField=null);
     }
 }
