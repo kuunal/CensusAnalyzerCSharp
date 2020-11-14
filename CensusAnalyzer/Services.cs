@@ -29,12 +29,11 @@ namespace CensusAnalyzerProject
             return LoadData(path, className)[className].Count;
         }
 
-        public List<CensusDAO> SortData(string field, string className, CustomEnums.sort sorttype)
+        public List<CensusDAO> SortData(string field, string[] classNames, CustomEnums.sort sorttype, string anotherField = null)
         {
             Factory factory = new Factory();
+            List<CensusDAO> list = GetMergedList(classNames);
             ISort sortObj = factory.GetSort(sorttype);
-            Dictionary<string, List<CensusDAO>> dict = LoadData(path, className);
-            List<CensusDAO> list = dict[className];
             List<CensusDAO> sortedList = sortObj.sort(list, field);
             if (CustomEnums.sort.DESCENDING.Equals(sorttype))
             {
@@ -43,6 +42,18 @@ namespace CensusAnalyzerProject
             string data = JsonConvert.SerializeObject(sortedList);
             File.WriteAllText(JSON_FILE_PATH, data);
             return sortedList;
+        }
+
+        public List<CensusDAO> GetMergedList(string[] classNames)
+        {
+            List<CensusDAO> list = new List<CensusDAO>();
+            Adaptor ad = new Adaptor();
+            Dictionary<string, List<CensusDAO>> dict = ad.GetCensusDict();
+            foreach (string className in classNames)
+            {
+                list.AddRange(dict[className]);
+            }
+            return list;
         }
     }
 }
