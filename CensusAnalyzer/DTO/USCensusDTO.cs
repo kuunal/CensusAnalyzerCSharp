@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CensusAnalyzerProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,6 +12,7 @@ namespace CensusAnalyzerProject.DTO
         public double area;
         public double density;
 
+        public USCensusDTO() { }
 
         public USCensusDTO(string[] values)
         {

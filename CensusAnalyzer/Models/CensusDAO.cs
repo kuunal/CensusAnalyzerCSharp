@@ -20,8 +20,8 @@ namespace CensusAnalyzerProject.Models
         {
             this.state = indianStateCensus.state;
             this.population = indianStateCensus.population;
-            this.area= indianStateCensus.areaInSquareKiloMeter;
-            this.density= indianStateCensus.densityPerSquareKiloMeter;
+            this.area= indianStateCensus.area;
+            this.density= indianStateCensus.density;
         }
 
         public CensusDAO(IndianStateCodeDTO indianStateCodeDAO)
