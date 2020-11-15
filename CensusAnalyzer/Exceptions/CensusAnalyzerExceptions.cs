@@ -10,7 +10,8 @@ namespace CensusAnalyzerProject.Exceptions
             INVALID_FILE,
             INVALID_TYPE,
             INVALID_DELIMITER,
-            INVALID_HEADER
+            INVALID_HEADER,
+            FILE_NOT_FOUND
         }
         public Enum ExceptionType;
         public CensusAnalyzerExceptions(Enum ExceptionType) : base(ExceptionType.ToString())
