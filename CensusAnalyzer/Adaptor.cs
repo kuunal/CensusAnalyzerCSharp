@@ -1,6 +1,8 @@
 ﻿using CensusAnalyzerProject.DTO;
+using CensusAnalyzerProject.Enums;
 using CensusAnalyzerProject.Exceptions;
 using CensusAnalyzerProject.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,11 +14,12 @@ namespace CensusAnalyzerProject
     public class Adaptor : ICensusCSVLoader
     {
         static Dictionary<string, List<CensusDAO>> dict = new Dictionary<string, List<CensusDAO>>();
-
         public Dictionary<string, List<CensusDAO>>  GetCensusDict()
         {
             return dict;
         }
+
+
 
         public Dictionary<string, List<CensusDAO>> LoadData(string path, string className)
         {
