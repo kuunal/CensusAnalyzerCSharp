@@ -15,11 +15,10 @@ namespace CensusAnalyzerProject
         }
     
 
-    public Services GetCSVLoader()
+    public ICensusCSVLoader GetCSVLoader()
         {
             ICensusCSVLoader censusAnalyzerObj;
             ICensusCSVLoader filetype;
-            Services countObj;
             ICensusCSVLoader delimiterObj;
             ICensusCSVLoader typeObj;
             ICensusCSVLoader headerObj;
@@ -28,8 +27,7 @@ namespace CensusAnalyzerProject
             typeObj = new CSVType(headerObj);
             delimiterObj = new Delimiter(typeObj);
             filetype = new FileType(delimiterObj);
-            countObj = new Services(filetype);
-            return countObj;
+            return filetype;
         }
 
         public CountryAdaptor GetCountryCensus(string className)
