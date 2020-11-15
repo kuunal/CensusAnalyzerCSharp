@@ -11,7 +11,8 @@ namespace CensusAnalyzerProject.DTO
         public string stateName;
         public string stateCode;
         public int tIN;
-    
+
+        public IndianStateCodeDTO() { }
 
         public IndianStateCodeDTO(string[] values)
         {
@@ -20,7 +21,5 @@ namespace CensusAnalyzerProject.DTO
             this.stateName = values[1];
             this.tIN = Convert.ToInt32(values[2]);
         }
-
-
     }
 }
