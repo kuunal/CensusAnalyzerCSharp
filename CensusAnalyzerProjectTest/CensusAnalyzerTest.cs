@@ -161,7 +161,7 @@ namespace CensusAnalyzerProjectTest
         public void givenIndianStateCensusCSV_WhenToSort_ReturnsSortedList()
         {
             CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH,CustomEnums.TYPE.INDIASTATECENSUS);
-            IndianStateCensusDTO[] sortedList = CSVObj.SortData<IndianStateCensusDTO>( "state", new CustomEnums.TYPE[] {CustomEnums.TYPE.INDIASTATECENSUS }, CustomEnums.sort.ASCENDING);
+            IndianStateCensusDTO[] sortedList = CSVObj.SortData<IndianStateCensusDTO>( CustomEnums.FIELDS.STATE, new CustomEnums.TYPE[] {CustomEnums.TYPE.INDIASTATECENSUS }, CustomEnums.sort.ASCENDING);
             Assert.AreEqual("Andhra Pradesh", sortedList[0].state);
             Assert.AreEqual("West Bengal", sortedList[sortedList.Length  - 1].state);
         }
@@ -171,7 +171,7 @@ namespace CensusAnalyzerProjectTest
         public void givenIndianStateCodeCSV_WhenToSort_ReturnsSortedList()
         {
             CSVObj.LoadData(INDIAN_STATE_CODE_CSV_PATH,CustomEnums.TYPE.INDIASTATECODE);
-            IndianStateCodeDTO[] sortedList = CSVObj.SortData<IndianStateCodeDTO>( "stateCode", new CustomEnums.TYPE[] {CustomEnums.TYPE.INDIASTATECODE }, CustomEnums.sort.ASCENDING);
+            IndianStateCodeDTO[] sortedList = CSVObj.SortData<IndianStateCodeDTO>( CustomEnums.FIELDS.STATECODE, new CustomEnums.TYPE[] {CustomEnums.TYPE.INDIASTATECODE }, CustomEnums.sort.ASCENDING);
             Assert.AreEqual("AD", sortedList[0].stateCode);
             Assert.AreEqual("WB", sortedList[sortedList.Length  - 1].stateCode);
         }
@@ -190,7 +190,7 @@ namespace CensusAnalyzerProjectTest
         public void givenIndiaStateCensus_WhenToSortPopulation_ReturnsSortedPopulation()
         {
             Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH,CustomEnums.TYPE.INDIASTATECENSUS);
-            IndianStateCensusDTO[] sortedList = CSVObj.SortData<IndianStateCensusDTO>( "population", new CustomEnums.TYPE[] {CustomEnums.TYPE.INDIASTATECENSUS }, CustomEnums.sort.DESCENDING);
+            IndianStateCensusDTO[] sortedList = CSVObj.SortData<IndianStateCensusDTO>( CustomEnums.FIELDS.POPULATION, new CustomEnums.TYPE[] {CustomEnums.TYPE.INDIASTATECENSUS }, CustomEnums.sort.DESCENDING);
             Assert.AreEqual(199812341, sortedList[0].population);
             Assert.AreEqual(607688, sortedList[sortedList.Length-1].population);
         }
@@ -199,7 +199,7 @@ namespace CensusAnalyzerProjectTest
         public void givenIndiaStateCensus_WhenToSortPopulationDensity_ReturnsSortedPopulationDensity()
         {
             Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH,CustomEnums.TYPE.INDIASTATECENSUS);
-            IndianStateCensusDTO[] sortedList = CSVObj.SortData<IndianStateCensusDTO>("density", new CustomEnums.TYPE[] {CustomEnums.TYPE.INDIASTATECENSUS }, CustomEnums.sort.DESCENDING);
+            IndianStateCensusDTO[] sortedList = CSVObj.SortData<IndianStateCensusDTO>(CustomEnums.FIELDS.DENSITY, new CustomEnums.TYPE[] {CustomEnums.TYPE.INDIASTATECENSUS }, CustomEnums.sort.DESCENDING);
             Assert.AreEqual(1102, sortedList[0].density);
             Assert.AreEqual(50, sortedList[sortedList.Length  - 1].density);
         }
@@ -208,7 +208,7 @@ namespace CensusAnalyzerProjectTest
         public void givenIndiaStateCensus_WhenToSortArea_ReturnsSortedArea()
         {
             Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH,CustomEnums.TYPE.INDIASTATECENSUS);
-            IndianStateCensusDTO[] sortedList = CSVObj.SortData<IndianStateCensusDTO>("area", new CustomEnums.TYPE[] {CustomEnums.TYPE.INDIASTATECENSUS }, CustomEnums.sort.DESCENDING);
+            IndianStateCensusDTO[] sortedList = CSVObj.SortData<IndianStateCensusDTO>(CustomEnums.FIELDS.AREA, new CustomEnums.TYPE[] {CustomEnums.TYPE.INDIASTATECENSUS }, CustomEnums.sort.DESCENDING);
             Assert.AreEqual(342239, sortedList[0].area);
             Assert.AreEqual(3702, sortedList[sortedList.Length  - 1].area);
         }
@@ -280,7 +280,7 @@ namespace CensusAnalyzerProjectTest
         public void givenUSCensus_WhenToSortPopulation_ReturnsSortedPopulation()
         {
             CSVObj.LoadData(US_CENSUS_CSV_PATH, CustomEnums.TYPE.USCENSUS);
-            USCensusDTO[] sortedList = CSVObj.SortData<USCensusDTO>( "population", new CustomEnums.TYPE[] { CustomEnums.TYPE.USCENSUS }, CustomEnums.sort.DESCENDING);
+            USCensusDTO[] sortedList = CSVObj.SortData<USCensusDTO>( CustomEnums.FIELDS.POPULATION, new CustomEnums.TYPE[] { CustomEnums.TYPE.USCENSUS }, CustomEnums.sort.DESCENDING);
             Assert.AreEqual(37253956, sortedList[0].population);
             Assert.AreEqual(563626, sortedList[sortedList.Length  - 1].population);
         }
@@ -289,7 +289,7 @@ namespace CensusAnalyzerProjectTest
         public void givenUSCensus_WhenToSortArea_ReturnsSortedPopulation()
         {
             CSVObj.LoadData(US_CENSUS_CSV_PATH, CustomEnums.TYPE.USCENSUS);
-            USCensusDTO[] sortedList = CSVObj.SortData<USCensusDTO>("area", new CustomEnums.TYPE[] { CustomEnums.TYPE.USCENSUS }, CustomEnums.sort.DESCENDING);
+            USCensusDTO[] sortedList = CSVObj.SortData<USCensusDTO>(CustomEnums.FIELDS.AREA, new CustomEnums.TYPE[] { CustomEnums.TYPE.USCENSUS }, CustomEnums.sort.DESCENDING);
             Assert.AreEqual(1723338.01d, sortedList[0].area);
             Assert.AreEqual(177.0d, sortedList[sortedList.Length - 1].area);
         }
@@ -298,7 +298,7 @@ namespace CensusAnalyzerProjectTest
         public void givenUSCensus_WhenToSortDensity_ReturnsSortedPopulation()
         {
             Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(US_CENSUS_CSV_PATH, CustomEnums.TYPE.USCENSUS);
-            USCensusDTO[] sortedList = CSVObj.SortData<USCensusDTO>("density",new CustomEnums.TYPE[] { CustomEnums.TYPE.USCENSUS}, CustomEnums.sort.DESCENDING);
+            USCensusDTO[] sortedList = CSVObj.SortData<USCensusDTO>(CustomEnums.FIELDS.DENSITY,new CustomEnums.TYPE[] { CustomEnums.TYPE.USCENSUS}, CustomEnums.sort.DESCENDING);
             Assert.AreEqual(3805.6100000000001d, sortedList[0].density);
             Assert.AreEqual(0.46000000000000002d, sortedList[sortedList.Length - 1].density);
         }
@@ -309,7 +309,7 @@ namespace CensusAnalyzerProjectTest
             CSVObj.LoadData(US_CENSUS_CSV_PATH, CustomEnums.TYPE.USCENSUS);
             CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH,CustomEnums.TYPE.INDIASTATECENSUS);
             CustomEnums.TYPE[] arr = new CustomEnums.TYPE[] { CustomEnums.TYPE.USCENSUS,CustomEnums.TYPE.INDIASTATECENSUS };
-            USCensusDTO[] sortedList = CSVObj.SortData<USCensusDTO>("population", arr, CustomEnums.sort.DESCENDING, "density");
+            USCensusDTO[] sortedList = CSVObj.SortData<USCensusDTO>(CustomEnums.FIELDS.POPULATION, arr, CustomEnums.sort.DESCENDING, CustomEnums.FIELDS.DENSITY);
             Assert.AreEqual("Uttar Pradesh", sortedList[0].state);
             Assert.AreEqual("Wyoming", sortedList[sortedList.Length  - 1].state);
         }
@@ -331,7 +331,7 @@ namespace CensusAnalyzerProjectTest
         public void givenUSCensusToSortDensity_WhenNoSuchData_ThrowsException()
         {
             try { 
-                USCensusDTO[] sortedList = CSVObj.SortData<USCensusDTO>("density", new CustomEnums.TYPE[] { CustomEnums.TYPE.USCENSUS }, CustomEnums.sort.DESCENDING);
+                USCensusDTO[] sortedList = CSVObj.SortData<USCensusDTO>(CustomEnums.FIELDS.DENSITY, new CustomEnums.TYPE[] { CustomEnums.TYPE.USCENSUS }, CustomEnums.sort.DESCENDING);
             }
             catch (CensusAnalyzerExceptions e)
             {
