@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CensusAnalyzerProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,15 +9,17 @@ namespace CensusAnalyzerProject.DTO
     {
         public string state;
         public long population;
-        public long areaInSquareKiloMeter;
-        public long densityPerSquareKiloMeter;
+        public long area;
+        public long density;
         
+        public IndianStateCensusDTO() { }
+
         public IndianStateCensusDTO(string[] values)
         {
             this.state = values[0];
-            this.areaInSquareKiloMeter = long.Parse(values[2]);
+            this.area= long.Parse(values[2]);
             this.population = long.Parse(values[1]);
-            this.densityPerSquareKiloMeter = long.Parse(values[3]);
+            this.density= long.Parse(values[3]);
         }
     }
 }
