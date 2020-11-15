@@ -32,8 +32,9 @@ namespace CensusAnalyzerProject
             return LoadData(path, type)[className].Count;
         }
 
-        public T[] SortData<T>(string field, CustomEnums.TYPE[] classNames, CustomEnums.sort sorttype, string anotherField = null)
+        public T[] SortData<T>(CustomEnums.FIELDS fieldName, CustomEnums.TYPE[] classNames, CustomEnums.sort sorttype, CustomEnums.FIELDS? anotherField = null)
         {
+            string field = GetDescription(fieldName);
             List<string> classNameList = new List<string>();
             foreach(CustomEnums.TYPE type in classNames)
             {
@@ -71,7 +72,7 @@ namespace CensusAnalyzerProject
             return list;
         }
 
-        public string GetDescription(CustomEnums.TYPE type)
+        public string GetDescription(dynamic type)
         {
             FieldInfo field = type.GetType().GetField(type.ToString());
             var attr = field.GetCustomAttributes(typeof(DescriptionAttribute), false);
