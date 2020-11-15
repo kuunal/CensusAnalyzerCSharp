@@ -23,7 +23,7 @@ namespace CensusAnalyzerProject.Enums
             WRONGTYPE
         }
 
-        public enum INDIA_STATE_CENSUS_FIELD
+        public enum FIELDS
         {
             [Description("state")] 
             STATE,
@@ -31,10 +31,10 @@ namespace CensusAnalyzerProject.Enums
             [Description("population")]
             POPULATION,
 
-            [Description("areaInSquareKiloMeter")]
+            [Description("area")]
             AREA,
 
-            [Description("densityPerSquareKiloMeter")]
+            [Description("density")]
             DENSITY,
 
             [Description("srNo")]
