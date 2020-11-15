@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Text;
 
 namespace CensusAnalyzerProject
@@ -13,14 +14,12 @@ namespace CensusAnalyzerProject
     public class Services : Decorator, ICount
     {
         const string JSON_FILE_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/utilities/JSONOP.json";
-        string path;
         public Services(ICensusCSVLoader censusCSVLoader) : base(censusCSVLoader) { }
 
     
 
         public override Dictionary<string, List<CensusDAO>> LoadData(string path, string className)
         {
-            this.path = path;
             return base.LoadData(path, className);
         }
 
@@ -29,7 +28,7 @@ namespace CensusAnalyzerProject
             return LoadData(path, className)[className].Count;
         }
 
-        public List<CensusDAO> SortData(string field, string[] classNames, CustomEnums.sort sorttype, string anotherField = null)
+        public T[] SortData<T>(string field, string[] classNames, CustomEnums.sort sorttype, string anotherField = null)
         {
             Factory factory = new Factory();
             List<CensusDAO> list = GetMergedList(classNames);
@@ -40,8 +39,10 @@ namespace CensusAnalyzerProject
                 sortedList.Reverse();
             }
             string data = JsonConvert.SerializeObject(sortedList);
-            File.WriteAllText(JSON_FILE_PATH, data);
-            return sortedList;
+            T[] d = JsonConvert.DeserializeObject<T[]>(data);
+            string data1 = JsonConvert.SerializeObject(d); 
+            File.WriteAllText(JSON_FILE_PATH, data1);
+            return d;
         }
 
         public List<CensusDAO> GetMergedList(string[] classNames)
