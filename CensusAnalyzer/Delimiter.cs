@@ -13,14 +13,19 @@ namespace CensusAnalyzerProject
         public Delimiter(ICensusCSVLoader censusCSVLoader) : base(censusCSVLoader) { }
         public override Dictionary<string, List<CensusDAO>> LoadData(string path, string className)
         {
-            using (StreamReader reader = new StreamReader(path)) 
+            if (File.Exists(path))
             {
-                string data = reader.ReadLine();
-                if (!data.ToString().Contains(",") )
+                using (StreamReader reader = new StreamReader(path))
                 {
-                    throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_DELIMITER);
+                    string data = reader.ReadLine();
+                    if (!data.ToString().Contains(","))
+                    {
+                        throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_DELIMITER);
+                    }
                 }
             }
+            else
+                throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.FILE_NOT_FOUND);
             return base.LoadData(path, className);
         }
     }
