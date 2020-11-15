@@ -19,8 +19,13 @@ namespace CensusAnalyzerProject
 
         public string[] LoadData(string path, string className)
         {
-            string[] rows = File.ReadAllLines(path);
-            return rows;   
+            if (File.Exists(path))
+            {
+                string[] rows = File.ReadAllLines(path);
+                return rows;
+            }
+            else
+                throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.FILE_NOT_FOUND);
         }
 
     }
