@@ -13,10 +13,10 @@ namespace CensusAnalyzerProject
         {
         }
 
-        public override Dictionary<string, List<CensusDAO>> LoadData(string path, string className)
+        public override Dictionary<string, List<CensusDAO>> ParseCSV(string[] rows, string className, string path)
         {
             verifyType("CensusAnalyzerProject.DTO." + className);
-            return base.LoadData(path, className);
+            return base.ParseCSV(rows, className);
         }
 
         public void verifyType(string className)

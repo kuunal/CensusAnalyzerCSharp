@@ -10,7 +10,7 @@ namespace CensusAnalyzerProject
 {
     class IndianAdaptee : CountryAdaptor
     {
-        public List<CensusDAO> CSVParser(string[] rows, string className)
+        public List<CensusDAO> StoreData(string[] rows, string className)
         {
             Dictionary<string, List<CensusDAO>> censusData = new Dictionary<string, List<CensusDAO>>();
             List<CensusDAO> data = new List<CensusDAO>();

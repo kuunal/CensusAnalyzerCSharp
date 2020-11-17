@@ -21,13 +21,11 @@ namespace CensusAnalyzerProject
 
 
 
-        public Dictionary<string, List<CensusDAO>> LoadData(string path, string className)
+        public Dictionary<string, List<CensusDAO>> ParseCSV(string[] rows, string className, string path=null)
         {
-            Loader loader = new Loader();
-            string[] rows= loader.LoadData(path, className);
             Factory factory = new Factory();
             CountryAdaptor adaptorObj = factory.GetCountryCensus(className);
-            List<CensusDAO> censusList = adaptorObj.CSVParser(rows, className);
+            List<CensusDAO> censusList = adaptorObj.StoreData(rows, className);
             try
             {
                 dict.Add(className, censusList);

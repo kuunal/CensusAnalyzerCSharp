@@ -8,6 +8,6 @@ namespace CensusAnalyzerProject
 {
     public interface ICensusCSVLoader   
     {
-        public Dictionary<string, List<CensusDAO>> LoadData(string path, string className);
+        public Dictionary<string, List<CensusDAO>> ParseCSV(string[] data, string className, string path=null);
     }
 }

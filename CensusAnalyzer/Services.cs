@@ -23,7 +23,9 @@ namespace CensusAnalyzerProject
         public Dictionary<string, List<CensusDAO>> LoadData(string path, CustomEnums.TYPE type)
         {
             string className = GetDescription(type);
-            return factory.GetCSVLoader().LoadData(path, className);
+            Loader loader = new Loader();
+            string[] data = loader.LoadData(path, className);
+            return factory.GetCSVLoader().ParseCSV(data, className, path);
         }
 
         public int GetCount(string path, CustomEnums.TYPE type)

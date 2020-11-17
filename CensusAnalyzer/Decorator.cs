@@ -14,9 +14,9 @@ namespace CensusAnalyzerProject
         {
             this.censusCSVLoader = censusCSVLoader;
         }
-        public virtual Dictionary<string, List<CensusDAO>> LoadData(string path, string className)
+        public virtual Dictionary<string, List<CensusDAO>> ParseCSV(string[] rows, string className, string path=null)
         {
-            return censusCSVLoader.LoadData(path, className);
+            return censusCSVLoader.ParseCSV(rows, className, path);
         }
 
     }

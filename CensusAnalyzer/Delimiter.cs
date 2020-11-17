@@ -11,22 +11,16 @@ namespace CensusAnalyzerProject
     public class Delimiter : Decorator
     {
         public Delimiter(ICensusCSVLoader censusCSVLoader) : base(censusCSVLoader) { }
-        public override Dictionary<string, List<CensusDAO>> LoadData(string path, string className)
+        public override Dictionary<string, List<CensusDAO>> ParseCSV(string[] rows, string className, string path=null)
         {
-            if (File.Exists(path))
             {
-                using (StreamReader reader = new StreamReader(path))
+                foreach(string row in rows)
+                if (!row.Contains(","))
                 {
-                    string data = reader.ReadLine();
-                    if (!data.ToString().Contains(","))
-                    {
-                        throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_DELIMITER);
-                    }
+                    throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_DELIMITER);
                 }
             }
-            else
-                throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.FILE_NOT_FOUND);
-            return base.LoadData(path, className);
+            return base.ParseCSV(rows, className);
         }
     }
 }
