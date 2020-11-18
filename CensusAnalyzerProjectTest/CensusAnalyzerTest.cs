@@ -37,7 +37,7 @@ namespace CensusAnalyzerProjectTest
         }
         
         [Test]
-        public void givenIndianCensusCSV_WhenCorrect_ReturnsNumberOfRecords()
+        public void givenIndianCensusCSVToAnalyze_WhenCorrect_ShouldReturnNumberOfRecords()
         {
             
             int count = CSVObj.GetCount(INDIAN_CENSUS_CSV_PATH,CustomEnums.TYPE.INDIASTATECENSUS);
@@ -45,7 +45,7 @@ namespace CensusAnalyzerProjectTest
         }
 
         [Test]  
-        public void givenIndianCensusCSV_WhenIncorrect_ThrowsException()
+        public void givenIndianCensusCSVToAnalyze_WhenIncorrect_ShouldThrowInvalidFileException()
         {
             try
             {
@@ -58,7 +58,7 @@ namespace CensusAnalyzerProjectTest
         }
 
         [Test]
-        public void givenCorrectIndianCensusCSV_WhenTypeIncorrect_ThrowsException()
+        public void givenCorrectIndianCensusCSVToAnalyze_WhenTypeIncorrect_ShouldThrowInvalidTypeException()
         {
             try
             {
@@ -70,7 +70,7 @@ namespace CensusAnalyzerProjectTest
         }
 
         [Test]
-        public void givenIndiaCensusCSV_WhenIncorrectDelimiter_ThrowsException()
+        public void givenIndiaCensusCSVToAnalyze_WhenIncorrectDelimiter_ShouldThrowException()
         {
             try { 
                 CSVObj.LoadData(WRONG_INDIAN_CENSUS_CSV_DELIMITER_PATH,CustomEnums.TYPE.INDIASTATECENSUS);
@@ -81,7 +81,7 @@ namespace CensusAnalyzerProjectTest
         }
 
         [Test]
-        public void givenIndiaCensusCSV_WhenIncorrectHeader_ThrowsException()
+        public void givenIndiaCensusCSVToAnalyze_WhenIncorrectHeader_ShouldThrowInvalidHeaderException()
         {
             try
             {
@@ -95,7 +95,7 @@ namespace CensusAnalyzerProjectTest
 
 
         [Test]
-        public void givenIndianStateCodeCSV_WhenCorrect_ReturnsNumberOfRecords()
+        public void givenIndianStateCodeCSVToAnalyze_WhenCorrect_ShouldReturnNumberOfRecords()
         {
 
             int count = CSVObj.GetCount(INDIAN_STATE_CODE_CSV_PATH,CustomEnums.TYPE.INDIASTATECODE);
@@ -105,7 +105,7 @@ namespace CensusAnalyzerProjectTest
 
 
         [Test]
-        public void givenIndianStateCodeCSV_WhenIncorrect_ThrowsException()
+        public void givenIndianStateCodeCSVToAnalyze_WhenIncorrect_ShouldThrowInvalidFileException()
         {
             try
             {
@@ -118,7 +118,7 @@ namespace CensusAnalyzerProjectTest
         }
 
         [Test]
-        public void givenCorrectIndianStateCodeCSV_WhenTypeIncorrect_ThrowsException()
+        public void givenCorrectIndianStateCodeCSVToAnalyze_WhenTypeIncorrect_ShouldThrowInvalidTypeException()
         {
             try
             {
@@ -131,7 +131,7 @@ namespace CensusAnalyzerProjectTest
         }
 
         [Test]
-        public void givenIndiaStateCodeCSV_WhenIncorrectDelimiter_ThrowsException()
+        public void givenIndiaStateCodeCSVToAnalyze_WhenIncorrectDelimiter_ShouldThrowException()
         {
             try
             {
@@ -144,7 +144,7 @@ namespace CensusAnalyzerProjectTest
         }
 
         [Test]
-        public void givenIndiaStateCodeCSV_WhenIncorrectHeader_ThrowsException()
+        public void givenIndiaStateCodeCSVToAnalyze_WhenIncorrectHeader_ShouldThrowInvalidHeaderException()
         {
             try
             {
@@ -158,7 +158,7 @@ namespace CensusAnalyzerProjectTest
 
         
         [Test]
-        public void givenIndianStateCensusCSV_WhenToSort_ReturnsSortedList()
+        public void givenIndianStateCensusCSVToAnalyze_WhenToSort_ShouldReturnSortedList()
         {
             CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH,CustomEnums.TYPE.INDIASTATECENSUS);
             IndianStateCensusDTO[] sortedList = CSVObj.SortData<IndianStateCensusDTO>( CustomEnums.FIELDS.STATE, new CustomEnums.TYPE[] {CustomEnums.TYPE.INDIASTATECENSUS }, CustomEnums.sort.ASCENDING);
@@ -168,7 +168,7 @@ namespace CensusAnalyzerProjectTest
 
 
         [Test]
-        public void givenIndianStateCodeCSV_WhenToSort_ReturnsSortedList()
+        public void givenIndianStateCodeCSVToAnalyze_WhenToSort_ShouldReturnSortedList()
         {
             CSVObj.LoadData(INDIAN_STATE_CODE_CSV_PATH,CustomEnums.TYPE.INDIASTATECODE);
             IndianStateCodeDTO[] sortedList = CSVObj.SortData<IndianStateCodeDTO>( CustomEnums.FIELDS.STATECODE, new CustomEnums.TYPE[] {CustomEnums.TYPE.INDIASTATECODE }, CustomEnums.sort.ASCENDING);
@@ -179,7 +179,7 @@ namespace CensusAnalyzerProjectTest
 
 
         [Test]
-        public void givenIndiaStateCensus_AndIndiaStateCode_WhenTogether_LoadsSuccessfully()
+        public void givenIndiaStateCensus_AndIndiaStateCodeToAnalyze_WhenTogether_LoadsSuccessfully()
         {
             Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH,CustomEnums.TYPE.INDIASTATECENSUS);
             Assert.IsTrue(map.ContainsKey("IndianStateCensusDTO"));
@@ -187,7 +187,7 @@ namespace CensusAnalyzerProjectTest
         }
 
         [Test]
-        public void givenIndiaStateCensus_WhenToSortPopulation_ReturnsSortedPopulation()
+        public void givenIndiaStateCensusToAnalyze_WhenToSortPopulation_ShouldReturnSortedPopulation()
         {
             Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH,CustomEnums.TYPE.INDIASTATECENSUS);
             IndianStateCensusDTO[] sortedList = CSVObj.SortData<IndianStateCensusDTO>( CustomEnums.FIELDS.POPULATION, new CustomEnums.TYPE[] {CustomEnums.TYPE.INDIASTATECENSUS }, CustomEnums.sort.DESCENDING);
@@ -196,7 +196,7 @@ namespace CensusAnalyzerProjectTest
         }
 
         [Test]
-        public void givenIndiaStateCensus_WhenToSortPopulationDensity_ReturnsSortedPopulationDensity()
+        public void givenIndiaStateCensusToAnalyze_WhenToSortPopulationDensity_ShouldReturnSortedPopulationDensity()
         {
             Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH,CustomEnums.TYPE.INDIASTATECENSUS);
             IndianStateCensusDTO[] sortedList = CSVObj.SortData<IndianStateCensusDTO>(CustomEnums.FIELDS.DENSITY, new CustomEnums.TYPE[] {CustomEnums.TYPE.INDIASTATECENSUS }, CustomEnums.sort.DESCENDING);
@@ -205,7 +205,7 @@ namespace CensusAnalyzerProjectTest
         }
 
         [Test]
-        public void givenIndiaStateCensus_WhenToSortArea_ReturnsSortedArea()
+        public void givenIndiaStateCensusToAnalyze_WhenToSortArea_ShouldReturnSortedArea()
         {
             Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH,CustomEnums.TYPE.INDIASTATECENSUS);
             IndianStateCensusDTO[] sortedList = CSVObj.SortData<IndianStateCensusDTO>(CustomEnums.FIELDS.AREA, new CustomEnums.TYPE[] {CustomEnums.TYPE.INDIASTATECENSUS }, CustomEnums.sort.DESCENDING);
@@ -214,7 +214,7 @@ namespace CensusAnalyzerProjectTest
         }
 
         [Test]
-        public void givenUSCensusCSV_WhenCorrect_ReturnsCount()
+        public void givenUSCensusCSVToAnalyze_WhenCorrect_ShouldReturnCount()
         {
             int count = CSVObj.GetCount(US_CENSUS_CSV_PATH, CustomEnums.TYPE.USCENSUS);
             Assert.AreEqual(51, count);
@@ -222,7 +222,7 @@ namespace CensusAnalyzerProjectTest
 
 
         [Test]
-        public void givenUSCensusCSV_WhenIncorrect_ThrowsException()
+        public void givenUSCensusCSVToAnalyze_WhenIncorrect_ShouldThrowInvalidFileException()
         {
             try
             {
@@ -235,7 +235,7 @@ namespace CensusAnalyzerProjectTest
         }
 
         [Test]
-        public void givenCorrectUSCensusCSV_WhenTypeIncorrect_ThrowsException()
+        public void givenCorrectUSCensusCSVToAnalyze_WhenTypeIncorrect_ShouldThrowInvalidTypeException()
         {
             try
             {
@@ -249,7 +249,7 @@ namespace CensusAnalyzerProjectTest
 
 
         [Test]
-        public void givenUSCensusCSV_WhenIncorrectDelimiter_ThrowsException()
+        public void givenUSCensusCSVToAnalyze_WhenIncorrectDelimiter_ShouldThrowException()
         {
             try
             {
@@ -263,7 +263,7 @@ namespace CensusAnalyzerProjectTest
 
 
         [Test]
-        public void givenUSCensusCSV_WhenIncorrectHeader_ThrowsException()
+        public void givenUSCensusCSVToAnalyze_WhenIncorrectHeader_ShouldThrowInvalidHeaderException()
         {
             try
             {
@@ -277,7 +277,7 @@ namespace CensusAnalyzerProjectTest
 
 
         [Test]
-        public void givenUSCensus_WhenToSortPopulation_ReturnsSortedPopulation()
+        public void givenUSCensusToAnalyze_WhenToSortPopulation_ShouldReturnSortedPopulation()
         {
             CSVObj.LoadData(US_CENSUS_CSV_PATH, CustomEnums.TYPE.USCENSUS);
             USCensusDTO[] sortedList = CSVObj.SortData<USCensusDTO>( CustomEnums.FIELDS.POPULATION, new CustomEnums.TYPE[] { CustomEnums.TYPE.USCENSUS }, CustomEnums.sort.DESCENDING);
@@ -286,7 +286,7 @@ namespace CensusAnalyzerProjectTest
         }
 
         [Test]
-        public void givenUSCensus_WhenToSortArea_ReturnsSortedPopulation()
+        public void givenUSCensusToAnalyze_WhenToSortArea_ShouldReturnSortedPopulation()
         {
             CSVObj.LoadData(US_CENSUS_CSV_PATH, CustomEnums.TYPE.USCENSUS);
             USCensusDTO[] sortedList = CSVObj.SortData<USCensusDTO>(CustomEnums.FIELDS.AREA, new CustomEnums.TYPE[] { CustomEnums.TYPE.USCENSUS }, CustomEnums.sort.DESCENDING);
@@ -295,7 +295,7 @@ namespace CensusAnalyzerProjectTest
         }
 
         [Test]
-        public void givenUSCensus_WhenToSortDensity_ReturnsSortedPopulation()
+        public void givenUSCensusToAnalyze_WhenToSortDensity_ShouldReturnSortedPopulation()
         {
             Dictionary<string, List<CensusDAO>> map = CSVObj.LoadData(US_CENSUS_CSV_PATH, CustomEnums.TYPE.USCENSUS);
             USCensusDTO[] sortedList = CSVObj.SortData<USCensusDTO>(CustomEnums.FIELDS.DENSITY,new CustomEnums.TYPE[] { CustomEnums.TYPE.USCENSUS}, CustomEnums.sort.DESCENDING);
@@ -304,7 +304,7 @@ namespace CensusAnalyzerProjectTest
         }
 
         [Test]
-        public void givenUSCensusAndIndianCensus_WhenToSort_ReturnsSortedResult()
+        public void givenUSCensusAndIndianCensusToAnalyze_WhenToSort_ShouldReturnSortedResult()
         {
             CSVObj.LoadData(US_CENSUS_CSV_PATH, CustomEnums.TYPE.USCENSUS);
             CSVObj.LoadData(INDIAN_CENSUS_CSV_PATH,CustomEnums.TYPE.INDIASTATECENSUS);
@@ -316,7 +316,7 @@ namespace CensusAnalyzerProjectTest
 
 
         [Test]
-        public void givenUSCensus_WhenFileNotFound_ThrowsException()
+        public void givenUSCensusToAnalyze_WhenFileNotFound_ShouldThrowException()
         {
             try
             {
@@ -328,7 +328,7 @@ namespace CensusAnalyzerProjectTest
         }
 
         [Test]
-        public void givenUSCensusToSortDensity_WhenNoSuchData_ThrowsException()
+        public void givenUSCensusToSortDensityToAnalyze_WhenNoSuchData_ShouldThrowException()
         {
             try { 
                 USCensusDTO[] sortedList = CSVObj.SortData<USCensusDTO>(CustomEnums.FIELDS.DENSITY, new CustomEnums.TYPE[] { CustomEnums.TYPE.USCENSUS }, CustomEnums.sort.DESCENDING);
