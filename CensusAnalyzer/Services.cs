@@ -52,7 +52,7 @@ namespace CensusAnalyzerProject
         /// <param name="classNames">The class names.</param>
         /// <param name="sorttype">The sorttype.</param>
         /// <param name="anotherField">Another field.</param>
-        /// <returns></returns>
+        /// <returns>DTO object</returns>
         public T[] SortData<T>(CustomEnums.FIELDS fieldName, CustomEnums.TYPE[] classNames, CustomEnums.sort sorttype, CustomEnums.FIELDS? anotherField = null)
         {
             string field = GetDescription(fieldName);

@@ -15,6 +15,6 @@ namespace CensusAnalyzerProject
         /// <param name="field">The field.</param>
         /// <param name="anotherField">Acts as secondary field for sortng.</param>
         /// <returns></returns>
-/        public List<CensusDAO> sort(List<CensusDAO> data, string field, string anotherField=null);
+        public List<CensusDAO> sort(List<CensusDAO> data, string field, string anotherField=null);
     }
 }
