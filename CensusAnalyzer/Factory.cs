@@ -15,18 +15,18 @@ namespace CensusAnalyzerProject
         }
     
 
-    public ICensusCSVLoader GetCSVLoader()
+    public Loader GetCSVLoader()
         {
-            ICensusCSVLoader censusAnalyzerObj;
-            ICensusCSVLoader filetype;
-            ICensusCSVLoader delimiterObj;
-            ICensusCSVLoader typeObj;
-            ICensusCSVLoader headerObj;
-            censusAnalyzerObj = new Adaptor();
-            headerObj = new Header(censusAnalyzerObj);
-            typeObj = new CSVType(headerObj);
-            delimiterObj = new Delimiter(typeObj);
-            filetype = new FileType(delimiterObj);
+            Loader censusAnalyzerObj;
+            Loader delimiterObj;
+            Loader typeObj;
+            Loader headerObj;
+            Loader filetype;
+            censusAnalyzerObj = new Loader();
+            delimiterObj = new Delimiter(censusAnalyzerObj);
+            typeObj = new CSVType(delimiterObj);
+            headerObj = new Header(typeObj);
+            filetype = new FileType(headerObj);
             return filetype;
         }
 

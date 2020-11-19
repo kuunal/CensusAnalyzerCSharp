@@ -8,18 +8,18 @@ using System.Text;
 
 namespace CensusAnalyzerProject
 {
-    public class FileType : Decorator
+    public class FileType : Loader
     {
+        Loader loader;
+        public FileType(Loader loader)
+        {
+            this.loader = loader;
+        }
         const string ALLOWED_EXTENSION = ".csv";
 
-        public FileType(ICensusCSVLoader censusCSVLoader) : base(censusCSVLoader)
-        {
-        }
-
-        public override Dictionary<string, List<CensusDAO>> ParseCSV(string[] rows, string className, string path)
-        {
+        public override string[] LoadData(string path, string className) { 
             VerifyCSV(path);
-            return base.ParseCSV(rows, className, path);
+            return loader.LoadData(path, className);
         }
 
         public void VerifyCSV(string path)

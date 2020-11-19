@@ -9,16 +9,19 @@ using System.Text;
 
 namespace CensusAnalyzerProject
 {
-    public class Header : Decorator
+    public class Header : Loader
     {
-        public Header(ICensusCSVLoader censusCSVLoader) : base(censusCSVLoader)
+        Loader loader;
+        public Header(Loader loader)
         {
+            this.loader = loader;
         }
 
-        public override Dictionary<string, List<CensusDAO>> ParseCSV(string[] rows, string className, string path=null)
+        public override string[] LoadData(string path, string className)
         {
-                ValidateHeaders(rows[0], className);
-                return base.ParseCSV(rows, className);
+            string[] rows = loader.LoadData(path, className);
+            ValidateHeaders(rows[0], className);
+            return rows;
         }
 
         public void ValidateHeaders(string headers, string className)

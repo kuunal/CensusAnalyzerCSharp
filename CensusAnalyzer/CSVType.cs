@@ -7,16 +7,18 @@ using System.Text;
 
 namespace CensusAnalyzerProject
 {
-    public class CSVType : Decorator
+    public class CSVType : Loader
     {
-        public CSVType(ICensusCSVLoader censusCSVLoader) : base(censusCSVLoader)
+        Loader loader;
+        public CSVType(Loader loader)
         {
+            this.loader = loader;
         }
-
-        public override Dictionary<string, List<CensusDAO>> ParseCSV(string[] rows, string className, string path)
+   
+        public override string[] LoadData(string path, string className)
         {
             verifyType("CensusAnalyzerProject.DTO." + className);
-            return base.ParseCSV(rows, className);
+            return loader.LoadData(path, className);
         }
 
         public void verifyType(string className)

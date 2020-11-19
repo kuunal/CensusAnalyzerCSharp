@@ -8,19 +8,25 @@ using System.Text;
 
 namespace CensusAnalyzerProject
 {
-    public class Delimiter : Decorator
+    public class Delimiter : Loader
     {
-        public Delimiter(ICensusCSVLoader censusCSVLoader) : base(censusCSVLoader) { }
-        public override Dictionary<string, List<CensusDAO>> ParseCSV(string[] rows, string className, string path=null)
+        Loader loader;
+        public Delimiter(Loader loader)
         {
+            this.loader = loader;
+        }
+        public override string[] LoadData(string path, string className)
+        {
+
+            string[] rows = loader.LoadData(path, className);
             {
-                foreach(string row in rows)
-                if (!row.Contains(","))
-                {
-                    throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_DELIMITER);
-                }
+                foreach (string row in rows)
+                    if (!row.Contains(","))
+                    {
+                        throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_DELIMITER);
+                    }
             }
-            return base.ParseCSV(rows, className);
+            return rows;
         }
     }
 }
