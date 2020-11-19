@@ -12,7 +12,9 @@ namespace CensusAnalyzerProject.DTO
         public long population;
         public long area;
         public long density;
-        
+
+        public IndianStateCensusDTO() { }
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IndianStateCensusDTO"/> class.

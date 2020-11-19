@@ -13,6 +13,9 @@ namespace CensusAnalyzerProject.DTO
         public double area;
         public double density;
 
+        public USCensusDTO() { }
+
+
         /// <summary>
         /// Initializes a new instance of the <see cref="USCensusDTO"/> class.
         /// </summary>

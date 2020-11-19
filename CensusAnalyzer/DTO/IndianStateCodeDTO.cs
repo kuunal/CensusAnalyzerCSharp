@@ -13,6 +13,8 @@ namespace CensusAnalyzerProject.DTO
         public string stateCode;
         public int tIN;
 
+        public IndianStateCodeDTO() { }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="IndianStateCodeDTO"/> class.
         /// </summary>
