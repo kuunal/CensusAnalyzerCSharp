@@ -338,5 +338,17 @@ namespace CensusAnalyzerProjectTest
                 Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.NO_SUCH_DATA, e.ExceptionType);
             }
          }
+
+        [Test]
+        public void GivenIndiaStateCodeToAnalyze_WHenInvalidDataFormat_ShouldThrowInvalidException()
+        {
+            try {
+                CSVObj.LoadData("C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/utilities/IndiaStateCodeWrongValue.csv", CustomEnums.TYPE.INDIASTATECODE);
+
+            }catch(CensusAnalyzerExceptions e)
+            {
+                Assert.AreEqual(CensusAnalyzerExceptions.ExeptionType.INVALID_DATA, e.ExceptionType);
+            }
+        }
     }
 }
