@@ -18,22 +18,41 @@ namespace CensusAnalyzerProject
         Factory factory = new Factory();
         const string JSON_FILE_PATH = "C:/Users/Vishal/source/repos/CensusAnalyzer/CensusAnalyzerProjectTest/utilities/JSONOP.json";
 
-    
-
+        /// <summary>
+        /// Loads the data.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="type">The type.</param>
+        /// <returns>String array of CSV data</returns>
         public Dictionary<string, List<CensusDAO>> LoadData(string path, CustomEnums.TYPE type)
         {
             string className = GetDescription(type);
             string[] data = factory.GetCSVLoader().LoadData(path, className);
             Adaptor adaptor = new Adaptor();
-            return adaptor.ParseCSV(data, className, path);
+            return adaptor.LoadCSV(data, className);
         }
 
+        /// <summary>
+        /// Gets the count of given type of Country data.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="type">The type.</param>
+        /// <returns>Count of data</returns>
         public int GetCount(string path, CustomEnums.TYPE type)
         {
             string className = GetDescription(type);
             return LoadData(path, type)[className].Count;
         }
 
+        /// <summary>
+        /// Sorts the data.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="fieldName">Name of the field.</param>
+        /// <param name="classNames">The class names.</param>
+        /// <param name="sorttype">The sorttype.</param>
+        /// <param name="anotherField">Another field.</param>
+        /// <returns></returns>
         public T[] SortData<T>(CustomEnums.FIELDS fieldName, CustomEnums.TYPE[] classNames, CustomEnums.sort sorttype, CustomEnums.FIELDS? anotherField = null)
         {
             string field = GetDescription(fieldName);
@@ -56,6 +75,12 @@ namespace CensusAnalyzerProject
             return d;
         }
 
+        /// <summary>
+        /// Gets the merged list of two different countries.
+        /// </summary>
+        /// <param name="classNames">The class names.</param>
+        /// <returns>Data of two countries in list</returns>
+        /// <exception cref="CensusAnalyzerExceptions"></exception>
         public List<CensusDAO> GetMergedList(List<string> classNames)
         {
             List<CensusDAO> list = new List<CensusDAO>();
@@ -74,6 +99,11 @@ namespace CensusAnalyzerProject
             return list;
         }
 
+        /// <summary>
+        /// Gets the description of enum.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns>String value of enum description</returns>
         public string GetDescription(dynamic type)
         {
             FieldInfo field = type.GetType().GetField(type.ToString());

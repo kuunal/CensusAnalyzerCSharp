@@ -16,6 +16,10 @@ namespace CensusAnalyzerProject.Models
         public double area;
         public double density;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CensusDAO"/> class.
+        /// </summary>
+        /// <param name="indianStateCensus">IndianStateCensusDTO object for storing IndianCensus data.</param>
         public CensusDAO(IndianStateCensusDTO indianStateCensus)
         {
             this.state = indianStateCensus.state;
@@ -24,6 +28,10 @@ namespace CensusAnalyzerProject.Models
             this.density= indianStateCensus.density;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CensusDAO"/> class.
+        /// </summary>
+        /// <param name="indianStateCodeDAO">IndianStateCodeDTO object for storing indian state data.</param>
         public CensusDAO(IndianStateCodeDTO indianStateCodeDAO)
         {
             this.srNo = indianStateCodeDAO.srNo;
@@ -32,6 +40,10 @@ namespace CensusAnalyzerProject.Models
             this.tIN = indianStateCodeDAO.tIN;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CensusDAO"/> class.
+        /// </summary>
+        /// <param name="uSCensusDTO">USCensus object for storing UScensus data.</param>
         public CensusDAO(USCensusDTO uSCensusDTO)
         {
             this.state = uSCensusDTO.state;

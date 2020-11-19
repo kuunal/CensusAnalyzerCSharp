@@ -9,13 +9,21 @@ namespace CensusAnalyzerProject
 {
     public class Factory
     {
+        /// <summary>
+        /// Gets the sort.
+        /// </summary>
+        /// <param name="sorttype">The sorttype.</param>
+        /// <returns></returns>
         public ISort GetSort(CustomEnums.sort sorttype)
         {
                 return new Order();
         }
-    
 
-    public Loader GetCSVLoader()
+        /// <summary>
+        /// Gets the loader.
+        /// </summary>
+        /// <returns>Loader object</returns>
+        public Loader GetCSVLoader()
         {
             Loader censusAnalyzerObj;
             Loader delimiterObj;
@@ -30,6 +38,12 @@ namespace CensusAnalyzerProject
             return filetype;
         }
 
+        /// <summary>
+        /// Gets the Adaptee.
+        /// </summary>
+        /// <param name="className">Name of the class.</param>
+        /// <returns>Adaptee class based on classname</returns>
+        /// <exception cref="CensusAnalyzerExceptions">Throws Invalid type if default case.</exception>
         public CountryAdaptor GetCountryCensus(string className)
         {
             switch (className)

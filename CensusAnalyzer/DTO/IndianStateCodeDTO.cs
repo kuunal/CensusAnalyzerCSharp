@@ -13,8 +13,11 @@ namespace CensusAnalyzerProject.DTO
         public string stateCode;
         public int tIN;
 
-        public IndianStateCodeDTO() { }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IndianStateCodeDTO"/> class.
+        /// </summary>
+        /// <param name="values">Values array with valid csv data.</param>
+        /// <exception cref="CensusAnalyzerExceptions">Throws Invalid data if data is in wrong format</exception>
         public IndianStateCodeDTO(string[] values)
         {
             try { 

@@ -8,8 +8,19 @@ using System.Text;
 
 namespace CensusAnalyzerProject
 {
+    /// <summary>
+    /// Loads USCensus data.
+    /// </summary>
+    /// <seealso cref="CensusAnalyzerProject.CountryAdaptor" />
     class USAdaptee : CountryAdaptor
     {
+        /// <summary>
+        /// Stores the data of USCensus into list.
+        /// </summary>
+        /// <param name="rows">The rows.</param>
+        /// <param name="className">Name of the class.</param>
+        /// <returns>List of UScensus data</returns>
+        /// <exception cref="CensusAnalyzerExceptions"></exception>
         public List<CensusDAO> StoreData(string[] rows, string className)
         {
             List<CensusDAO> data = new List<CensusDAO>();

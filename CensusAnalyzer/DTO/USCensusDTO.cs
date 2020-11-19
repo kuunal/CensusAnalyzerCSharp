@@ -13,8 +13,11 @@ namespace CensusAnalyzerProject.DTO
         public double area;
         public double density;
 
-        public USCensusDTO() { }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="USCensusDTO"/> class.
+        /// </summary>
+        /// <param name="values">Values array with valid csv data.</param>
+        /// <exception cref="CensusAnalyzerExceptions">Throws Invalid data if data is in wrong format.</exception>
         public USCensusDTO(string[] values)
         {
             try { 

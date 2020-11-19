@@ -16,7 +16,13 @@ namespace CensusAnalyzerProject
             Console.WriteLine("Hello World!");
         }
 
-
+        /// <summary>
+        /// Loads the CSV data into sting array.
+        /// </summary>
+        /// <param name="path">The path.</param>
+        /// <param name="className">Name of the class.</param>
+        /// <returns>String array of CSV data</returns>
+        /// <exception cref="CensusAnalyzerExceptions"></exception>
         public virtual string[] LoadData(string path, string className)
         {
             if (File.Exists(path))

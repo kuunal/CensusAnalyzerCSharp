@@ -10,6 +10,13 @@ namespace CensusAnalyzerProject
 {
     class IndianAdaptee : CountryAdaptor
     {
+        /// <summary>
+        /// Stores the data using INDIANSTATECENSUS or INDIANSTATECODE DTO.
+        /// </summary>
+        /// <param name="rows">The rows.</param>
+        /// <param name="className">Name of the class.</param>
+        /// <returns>List of CENSUSDAO object.</returns>
+        /// <exception cref="CensusAnalyzerExceptions"></exception>
         public List<CensusDAO> StoreData(string[] rows, string className)
         {
             Dictionary<string, List<CensusDAO>> censusData = new Dictionary<string, List<CensusDAO>>();
