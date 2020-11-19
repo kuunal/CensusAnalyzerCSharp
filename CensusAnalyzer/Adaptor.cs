@@ -11,10 +11,10 @@ using System.Linq;
 
 namespace CensusAnalyzerProject
 {
-    public class Adaptor : ICensusCSVLoader
+    public class Adaptor 
     {
-        static Dictionary<string, List<CensusDAO>> dict = new Dictionary<string, List<CensusDAO>>();
-        public Dictionary<string, List<CensusDAO>>  GetCensusDict()
+        internal static Dictionary<string, List<CensusDAO>> dict = new Dictionary<string, List<CensusDAO>>();
+        internal Dictionary<string, List<CensusDAO>>  GetCensusDict()
         {
             return dict;
         }
