@@ -17,7 +17,7 @@ namespace CensusAnalyzerProject
         }
 
 
-        public string[] LoadData(string path, string className)
+        public virtual string[] LoadData(string path, string className)
         {
             if (File.Exists(path))
             {
