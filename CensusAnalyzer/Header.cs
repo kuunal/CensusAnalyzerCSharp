@@ -1,14 +1,17 @@
-﻿using CensusAnalyzerProject.Exceptions;
-using CensusAnalyzerProject.Models;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Text;
+﻿// <copyright file="FileType.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace CensusAnalyzerProject
 {
+    using CensusAnalyzerProject.Exceptions;
+    using System;
+    using System.Reflection;
+
+    /// <summary>
+    /// Matches header of data with fields.
+    /// </summary>
+    /// <seealso cref="CensusAnalyzerProject.Loader" />
     public class Header : Loader
     {
         Loader loader;

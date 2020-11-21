@@ -1,13 +1,18 @@
-﻿using CensusAnalyzerProject.Exceptions;
-using CensusAnalyzerProject.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// <copyright file="IndianStateCensusDTO.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 
 namespace CensusAnalyzerProject.DTO
 {
+    using CensusAnalyzerProject.Exceptions;
+
+    /// <summary>
+    /// DTO for indian state census data.
+    /// </summary>
     public class IndianStateCensusDTO
     {
+        
         public string state;
         public long population;
         public long area;

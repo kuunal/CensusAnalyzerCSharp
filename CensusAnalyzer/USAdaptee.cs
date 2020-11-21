@@ -1,13 +1,15 @@
-﻿using CensusAnalyzerProject.DTO;
-using CensusAnalyzerProject.Exceptions;
-using CensusAnalyzerProject.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿// <copyright file="Order.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>using CensusAnalyzerProject.DTO;
 
 namespace CensusAnalyzerProject
 {
+    using CensusAnalyzerProject.DTO;
+    using CensusAnalyzerProject.Exceptions;
+    using CensusAnalyzerProject.Models;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Loads USCensus data.
     /// </summary>

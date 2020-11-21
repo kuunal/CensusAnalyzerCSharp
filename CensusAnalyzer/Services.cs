@@ -1,18 +1,21 @@
-﻿using CensusAnalyzerProject.DTO;
-using CensusAnalyzerProject.Enums;
-using CensusAnalyzerProject.Exceptions;
-using CensusAnalyzerProject.Models;
-using Newtonsoft.Json;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Reflection;
-using System.Text;
+﻿// <copyright file="Order.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>using CensusAnalyzerProject.DTO;
 
 namespace CensusAnalyzerProject
 {
+    using CensusAnalyzerProject.Enums;
+    using CensusAnalyzerProject.Exceptions;
+    using CensusAnalyzerProject.Models;
+    using Newtonsoft.Json;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.IO;
+    using System.Reflection;
+
+    /// <summary>
+    /// Provides main services like sorting.
+    /// </summary>
     public class Services 
     {
         Factory factory = new Factory();

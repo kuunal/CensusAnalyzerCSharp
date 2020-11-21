@@ -1,13 +1,19 @@
-﻿using CensusAnalyzerProject.DTO;
-using CensusAnalyzerProject.Exceptions;
-using CensusAnalyzerProject.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿// <copyright file="IndianAdaptee.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace CensusAnalyzerProject
 {
+    using CensusAnalyzerProject.DTO;
+    using CensusAnalyzerProject.Exceptions;
+    using CensusAnalyzerProject.Models;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    /// <summary>
+    /// Loads indian data.
+    /// </summary>
+    /// <seealso cref="CensusAnalyzerProject.CountryAdaptor" />
     class IndianAdaptee : CountryAdaptor
     {
         /// <summary>

@@ -1,12 +1,16 @@
-﻿using CensusAnalyzerProject.Exceptions;
-using CensusAnalyzerProject.Models;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+﻿// <copyright file="CSVType.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace CensusAnalyzerProject
 {
+    using CensusAnalyzerProject.Exceptions;
+    using System;
+    
+    /// <summary>
+    /// Checks for the type of data
+    /// </summary>
+    /// <seealso cref="CensusAnalyzerProject.Loader" />
     public class CSVType : Loader
     {
         Loader loader;
@@ -46,7 +50,5 @@ namespace CensusAnalyzerProject
                 throw new CensusAnalyzerExceptions(CensusAnalyzerExceptions.ExeptionType.INVALID_TYPE);
             }
         }
-
-
     }
 }

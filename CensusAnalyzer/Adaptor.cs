@@ -1,16 +1,15 @@
-﻿using CensusAnalyzerProject.DTO;
-using CensusAnalyzerProject.Enums;
-using CensusAnalyzerProject.Exceptions;
-using CensusAnalyzerProject.Models;
-using Newtonsoft.Json;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿// <copyright file="Adaptor.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace CensusAnalyzerProject
 {
+    using CensusAnalyzerProject.Models;
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// Loads different types of data
+    /// </summary>
     public class Adaptor 
     {
         internal static Dictionary<string, List<CensusDAO>> dict = new Dictionary<string, List<CensusDAO>>();

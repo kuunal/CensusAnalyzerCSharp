@@ -1,11 +1,16 @@
-﻿using CensusAnalyzerProject.Models;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Text;
+﻿// <copyright file="ISort.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 
 namespace CensusAnalyzerProject
 {
+    using CensusAnalyzerProject.Models;
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// Provides sorting for Censusanalyzer
+    /// </summary>
     public interface ISort
     {
         /// <summary>

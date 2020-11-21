@@ -1,12 +1,14 @@
-﻿using CensusAnalyzerProject.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
+﻿// <copyright file="Order.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>using CensusAnalyzerProject.DTO;
 
 namespace CensusAnalyzerProject
 {
+    using CensusAnalyzerProject.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Implements ISort's method and does sorting based on given fields.
     /// </summary>

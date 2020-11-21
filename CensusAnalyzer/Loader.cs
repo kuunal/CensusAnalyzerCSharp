@@ -1,14 +1,16 @@
-﻿using CensusAnalyzerProject.DTO;
-using CensusAnalyzerProject.Exceptions;
-using CensusAnalyzerProject.Models;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿// <copyright file="Loader.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>using CensusAnalyzerProject.DTO;
 
 namespace CensusAnalyzerProject
 {
+    using CensusAnalyzerProject.Exceptions;
+    using System;
+    using System.IO;
+
+    /// <summary>
+    /// Reads the data.
+    /// </summary>
     public class Loader 
     {
         static void Main(string[] args)

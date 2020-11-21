@@ -1,11 +1,14 @@
-﻿using CensusAnalyzerProject.Exceptions;
-using CensusAnalyzerProject.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// <copyright file="USCensusDTO.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace CensusAnalyzerProject.DTO
 {
+    using CensusAnalyzerProject.Exceptions;
+
+    /// <summary>
+    /// DTO for US data.
+    /// </summary>
     public class USCensusDTO
     {
         public string state;

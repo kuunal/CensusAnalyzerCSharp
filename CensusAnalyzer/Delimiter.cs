@@ -1,13 +1,15 @@
-﻿using CensusAnalyzerProject.Exceptions;
-using CensusAnalyzerProject.Models;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿// <copyright file="Delimiter.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace CensusAnalyzerProject
 {
+    using CensusAnalyzerProject.Exceptions;
+
+    /// <summary>
+    /// Checks for the delimiter.
+    /// </summary>
+    /// <seealso cref="CensusAnalyzerProject.Loader" />
     public class Delimiter : Loader
     {
         Loader loader;

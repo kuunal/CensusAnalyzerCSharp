@@ -1,12 +1,15 @@
-﻿using CensusAnalyzerProject.DTO;
-using CensusAnalyzerProject.Enums;
-using CensusAnalyzerProject.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// <copyright file="Factory.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace CensusAnalyzerProject
 {
+    using CensusAnalyzerProject.Enums;
+    using CensusAnalyzerProject.Exceptions;
+
+    /// <summary>
+    /// Objects provider.
+    /// </summary>
     public class Factory
     {
         /// <summary>
